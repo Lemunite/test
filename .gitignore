@@ -6,7 +6,6 @@ frontend/node_modules/
 **/target/
 **/node_modules/
 **/*.log
-.mvn/
 /node/
 node_tmp/
 node_modules/
