@@ -1,0 +1,167 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-pregnancy-tetanus-heading"
+        data-cy="PregnancyTetanusCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microservicePregnancyTetanus.home.createOrEditLabel"
+      >
+        Create or edit a Pregnancy Tetanus
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microservicePregnancyTetanus.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let doseRef = editForm.get('dose')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dose" jhiTranslate="gatewayApp.microservicePregnancyTetanus.dose">Dose</label>
+          <select class="form-control" name="dose" formControlName="dose" id="field_dose" data-cy="dose">
+            <option [ngValue]="null">{{ 'gatewayApp.TetanusDose.null' | translate }}</option>
+            @for (tetanusDose of tetanusDoseValues; track $index) {
+              <option [value]="tetanusDose">{{ 'gatewayApp.TetanusDose.' + tetanusDose | translate }}</option>
+            }
+          </select>
+          @if (doseRef.invalid && (doseRef.dirty || doseRef.touched)) {
+            <div>
+              @if (editForm.get('dose')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_notInjected" jhiTranslate="gatewayApp.microservicePregnancyTetanus.notInjected"
+            >Not Injected</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="notInjected"
+            id="field_notInjected"
+            data-cy="notInjected"
+            formControlName="notInjected"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_injectionDate" jhiTranslate="gatewayApp.microservicePregnancyTetanus.injectionDate"
+            >Injection Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_injectionDate"
+              data-cy="injectionDate"
+              type="text"
+              class="form-control"
+              name="injectionDate"
+              ngbDatepicker
+              #injectionDateDp="ngbDatepicker"
+              formControlName="injectionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="injectionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pregnancyMonth" jhiTranslate="gatewayApp.microservicePregnancyTetanus.pregnancyMonth"
+            >Pregnancy Month</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="pregnancyMonth"
+            id="field_pregnancyMonth"
+            data-cy="pregnancyMonth"
+            formControlName="pregnancyMonth"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_reaction" jhiTranslate="gatewayApp.microservicePregnancyTetanus.reaction">Reaction</label>
+          <input type="text" class="form-control" name="reaction" id="field_reaction" data-cy="reaction" formControlName="reaction" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nextAppointment" jhiTranslate="gatewayApp.microservicePregnancyTetanus.nextAppointment"
+            >Next Appointment</label
+          >
+          <div class="input-group">
+            <input
+              id="field_nextAppointment"
+              data-cy="nextAppointment"
+              type="text"
+              class="form-control"
+              name="nextAppointment"
+              ngbDatepicker
+              #nextAppointmentDp="ngbDatepicker"
+              formControlName="nextAppointment"
+            />
+            <button type="button" class="btn btn-secondary" (click)="nextAppointmentDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfDosesReceived"
+            jhiTranslate="gatewayApp.microservicePregnancyTetanus.numberOfDosesReceived"
+            >Number Of Doses Received</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfDosesReceived"
+            id="field_numberOfDosesReceived"
+            data-cy="numberOfDosesReceived"
+            formControlName="numberOfDosesReceived"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_patient" jhiTranslate="gatewayApp.microservicePregnancyTetanus.patient">Patient</label>
+          <select
+            class="form-control"
+            id="field_patient"
+            data-cy="patient"
+            name="patient"
+            formControlName="patient"
+            [compareWith]="comparePatient"
+          >
+            <option [ngValue]="null"></option>
+            @for (patientOption of patientsSharedCollection; track $index) {
+              <option [ngValue]="patientOption">{{ patientOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

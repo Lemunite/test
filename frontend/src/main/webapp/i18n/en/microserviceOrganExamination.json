@@ -1,0 +1,46 @@
+{
+  "gatewayApp": {
+    "microserviceOrganExamination": {
+      "home": {
+        "title": "Organ Examinations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Organ Examination",
+        "createOrEditLabel": "Create or edit a Organ Examination",
+        "notFound": "No Organ Examinations found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Organ Examination {{ id }}?"
+      },
+      "detail": {
+        "title": "Organ Examination"
+      },
+      "id": "ID",
+      "cardiovascular": "Cardiovascular",
+      "respiratory": "Respiratory",
+      "digestive": "Digestive",
+      "urinary": "Urinary",
+      "musculoskeletal": "Musculoskeletal",
+      "endocrine": "Endocrine",
+      "neurological": "Neurological",
+      "psychiatric": "Psychiatric",
+      "surgery": "Surgery",
+      "obstetricsAndGynecology": "Obstetrics And Gynecology",
+      "otolaryngology": "Otolaryngology",
+      "dentistryAndMaxillofacialSurgery": "Dentistry And Maxillofacial Surgery",
+      "eye": "Eye",
+      "dermatology": "Dermatology",
+      "nutrition": "Nutrition",
+      "exercise": "Exercise",
+      "other": "Other",
+      "developmentAssessment": "Development Assessment",
+      "medicalRecord": "Medical Record"
+    }
+  },
+  "microserviceApp": {
+    "microserviceOrganExamination": {
+      "created": "A new Organ Examination is created with identifier {{ param }}",
+      "updated": "A Organ Examination is updated with identifier {{ param }}",
+      "deleted": "A Organ Examination is deleted with identifier {{ param }}"
+    }
+  }
+}

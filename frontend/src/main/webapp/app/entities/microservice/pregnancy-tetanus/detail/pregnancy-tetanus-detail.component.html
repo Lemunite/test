@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pregnancyTetanus(); as pregnancyTetanusRef) {
+      <div>
+        <h2 data-cy="pregnancyTetanusDetailsHeading">
+          <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.detail.title">Pregnancy Tetanus</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.dose">Dose</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.TetanusDose.' + (pregnancyTetanusRef.dose ?? 'null')">{{
+              { null: '', UV1: 'UV1', UV2: 'UV2', UV3: 'UV3', UV4: 'UV4', UV5: 'UV5' }[pregnancyTetanusRef.dose ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.notInjected">Not Injected</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.notInjected }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.injectionDate">Injection Date</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.injectionDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.pregnancyMonth">Pregnancy Month</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.pregnancyMonth }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.reaction">Reaction</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.reaction }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.nextAppointment">Next Appointment</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.nextAppointment | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.numberOfDosesReceived">Number Of Doses Received</span></dt>
+          <dd>
+            <span>{{ pregnancyTetanusRef.numberOfDosesReceived }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microservicePregnancyTetanus.patient">Patient</span></dt>
+          <dd>
+            @if (pregnancyTetanus()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', pregnancyTetanus()!.patient?.id, 'view']">{{ pregnancyTetanusRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pregnancy-tetanus', pregnancyTetanusRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

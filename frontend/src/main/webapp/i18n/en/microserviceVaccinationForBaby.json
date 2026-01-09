@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceVaccinationForBaby": {
+      "home": {
+        "title": "Vaccination For Babies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vaccination For Baby",
+        "createOrEditLabel": "Create or edit a Vaccination For Baby",
+        "notFound": "No Vaccination For Babies found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Vaccination For Baby {{ id }}?"
+      },
+      "detail": {
+        "title": "Vaccination For Baby"
+      },
+      "id": "ID",
+      "vaccine": "Vaccine",
+      "numberUse": "Number Use",
+      "vaccine": "Vaccine",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceVaccinationForBaby": {
+      "created": "A new Vaccination For Baby is created with identifier {{ param }}",
+      "updated": "A Vaccination For Baby is updated with identifier {{ param }}",
+      "deleted": "A Vaccination For Baby is deleted with identifier {{ param }}"
+    }
+  }
+}

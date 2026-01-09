@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "microserviceVaccinationTcmr": {
+      "home": {
+        "title": "Vaccination TCMRS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vaccination TCMR",
+        "createOrEditLabel": "Create or edit a Vaccination TCMR",
+        "notFound": "No Vaccination TCMRS found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Vaccination TCMR {{ id }}?"
+      },
+      "detail": {
+        "title": "Vaccination TCMR"
+      },
+      "id": "ID",
+      "vaccine": "Vaccine",
+      "notVaccinated": "Not Vaccinated",
+      "vaccinated": "Vaccinated",
+      "injectionDate": "Injection Date",
+      "reaction": "Reaction",
+      "nextAppointment": "Next Appointment",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceVaccinationTcmr": {
+      "created": "A new Vaccination TCMR is created with identifier {{ param }}",
+      "updated": "A Vaccination TCMR is updated with identifier {{ param }}",
+      "deleted": "A Vaccination TCMR is deleted with identifier {{ param }}"
+    }
+  }
+}

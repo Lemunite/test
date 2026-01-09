@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceVaccinationForBaby": {
+      "home": {
+        "title": "Vaccination For Babies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Vaccination For Baby",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Vaccination For Baby",
+        "notFound": "No Vaccination For Babies found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Vaccination For Baby {{ id }}?"
+      },
+      "detail": {
+        "title": "Vaccination For Baby"
+      },
+      "id": "ID",
+      "vaccine": "Vaccine",
+      "numberUse": "Number Use",
+      "vaccine": "Vaccine",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceVaccinationForBaby": {
+      "created": "Một Vaccination For Baby mới được tạo với định danh {{ param }}",
+      "updated": "Một Vaccination For Baby cập nhật với định danh {{ param }}",
+      "deleted": "Một Vaccination For Baby đã xóa với định danh {{ param }}"
+    }
+  }
+}

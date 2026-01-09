@@ -1,0 +1,19 @@
+export enum DiseaseName {
+  HEART = 'HEART',
+
+  BLOOD_PRESSURE = 'BLOOD_PRESSURE',
+
+  MENTAL = 'MENTAL',
+
+  ASTHMA = 'ASTHMA',
+
+  DIABETES = 'DIABETES',
+
+  EPILEPSY = 'EPILEPSY',
+
+  CANCER = 'CANCER',
+
+  TUBERCULOSIS = 'TUBERCULOSIS',
+
+  OTHER = 'OTHER',
+}

@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceDisease": {
+      "home": {
+        "title": "Diseases",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Disease",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Disease",
+        "notFound": "No Diseases found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Disease {{ id }}?"
+      },
+      "detail": {
+        "title": "Disease"
+      },
+      "id": "ID",
+      "name": "Name",
+      "specificType": "Specific Type",
+      "description": "Description",
+      "familyDisease": "Family Disease"
+    }
+  },
+  "microserviceApp": {
+    "microserviceDisease": {
+      "created": "Một Disease mới được tạo với định danh {{ param }}",
+      "updated": "Một Disease cập nhật với định danh {{ param }}",
+      "deleted": "Một Disease đã xóa với định danh {{ param }}"
+    }
+  }
+}

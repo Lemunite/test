@@ -1,0 +1,332 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-medical-record-heading"
+        data-cy="MedicalRecordCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceMedicalRecord.home.createOrEditLabel"
+      >
+        Create or edit a Medical Record
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceMedicalRecord.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let examinationDateRef = editForm.get('examinationDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_examinationDate" jhiTranslate="gatewayApp.microserviceMedicalRecord.examinationDate"
+            >Examination Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_examinationDate"
+              data-cy="examinationDate"
+              type="text"
+              class="form-control"
+              name="examinationDate"
+              ngbDatepicker
+              #examinationDateDp="ngbDatepicker"
+              formControlName="examinationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="examinationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (examinationDateRef.invalid && (examinationDateRef.dirty || examinationDateRef.touched)) {
+            <div>
+              @if (editForm.get('examinationDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_medicalHistory" jhiTranslate="gatewayApp.microserviceMedicalRecord.medicalHistory"
+            >Medical History</label
+          >
+          <textarea
+            class="form-control"
+            name="medicalHistory"
+            id="field_medicalHistory"
+            data-cy="medicalHistory"
+            formControlName="medicalHistory"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_leftEyeNoGlass" jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeNoGlass"
+            >Left Eye No Glass</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="leftEyeNoGlass"
+            id="field_leftEyeNoGlass"
+            data-cy="leftEyeNoGlass"
+            formControlName="leftEyeNoGlass"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rightEyeNoGlass" jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeNoGlass"
+            >Right Eye No Glass</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="rightEyeNoGlass"
+            id="field_rightEyeNoGlass"
+            data-cy="rightEyeNoGlass"
+            formControlName="rightEyeNoGlass"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_leftEyeWithGlass" jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeWithGlass"
+            >Left Eye With Glass</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="leftEyeWithGlass"
+            id="field_leftEyeWithGlass"
+            data-cy="leftEyeWithGlass"
+            formControlName="leftEyeWithGlass"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rightEyeWithGlass" jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeWithGlass"
+            >Right Eye With Glass</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="rightEyeWithGlass"
+            id="field_rightEyeWithGlass"
+            data-cy="rightEyeWithGlass"
+            formControlName="rightEyeWithGlass"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pulse" jhiTranslate="gatewayApp.microserviceMedicalRecord.pulse">Pulse</label>
+          <input type="number" class="form-control" name="pulse" id="field_pulse" data-cy="pulse" formControlName="pulse" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_temperature" jhiTranslate="gatewayApp.microserviceMedicalRecord.temperature"
+            >Temperature</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="temperature"
+            id="field_temperature"
+            data-cy="temperature"
+            formControlName="temperature"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_bloodPressure" jhiTranslate="gatewayApp.microserviceMedicalRecord.bloodPressure"
+            >Blood Pressure</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bloodPressure"
+            id="field_bloodPressure"
+            data-cy="bloodPressure"
+            formControlName="bloodPressure"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_respiratoryRate" jhiTranslate="gatewayApp.microserviceMedicalRecord.respiratoryRate"
+            >Respiratory Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="respiratoryRate"
+            id="field_respiratoryRate"
+            data-cy="respiratoryRate"
+            formControlName="respiratoryRate"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_weight" jhiTranslate="gatewayApp.microserviceMedicalRecord.weight">Weight</label>
+          <input type="number" class="form-control" name="weight" id="field_weight" data-cy="weight" formControlName="weight" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_height" jhiTranslate="gatewayApp.microserviceMedicalRecord.height">Height</label>
+          <input type="number" class="form-control" name="height" id="field_height" data-cy="height" formControlName="height" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_bmi" jhiTranslate="gatewayApp.microserviceMedicalRecord.bmi">Bmi</label>
+          <input type="number" class="form-control" name="bmi" id="field_bmi" data-cy="bmi" formControlName="bmi" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_waist" jhiTranslate="gatewayApp.microserviceMedicalRecord.waist">Waist</label>
+          <input type="number" class="form-control" name="waist" id="field_waist" data-cy="waist" formControlName="waist" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_skinMucosa" jhiTranslate="gatewayApp.microserviceMedicalRecord.skinMucosa"
+            >Skin Mucosa</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="skinMucosa"
+            id="field_skinMucosa"
+            data-cy="skinMucosa"
+            formControlName="skinMucosa"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_other" jhiTranslate="gatewayApp.microserviceMedicalRecord.other">Other</label>
+          <input type="text" class="form-control" name="other" id="field_other" data-cy="other" formControlName="other" />
+        </div>
+
+        @let diseaseNameRef = editForm.get('diseaseName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_diseaseName" jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseName"
+            >Disease Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="diseaseName"
+            id="field_diseaseName"
+            data-cy="diseaseName"
+            formControlName="diseaseName"
+          />
+          @if (diseaseNameRef.invalid && (diseaseNameRef.dirty || diseaseNameRef.touched)) {
+            <div>
+              @if (editForm.get('diseaseName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_diseaseCode" jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseCode"
+            >Disease Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="diseaseCode"
+            id="field_diseaseCode"
+            data-cy="diseaseCode"
+            formControlName="diseaseCode"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_advice" jhiTranslate="gatewayApp.microserviceMedicalRecord.advice">Advice</label>
+          <textarea class="form-control" name="advice" id="field_advice" data-cy="advice" formControlName="advice"></textarea>
+        </div>
+
+        @let docterNameRef = editForm.get('docterName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_docterName" jhiTranslate="gatewayApp.microserviceMedicalRecord.docterName"
+            >Docter Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="docterName"
+            id="field_docterName"
+            data-cy="docterName"
+            formControlName="docterName"
+          />
+          @if (docterNameRef.invalid && (docterNameRef.dirty || docterNameRef.touched)) {
+            <div>
+              @if (editForm.get('docterName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_organExamination" jhiTranslate="gatewayApp.microserviceMedicalRecord.organExamination"
+            >Organ Examination</label
+          >
+          <select
+            class="form-control"
+            id="field_organExamination"
+            data-cy="organExamination"
+            name="organExamination"
+            formControlName="organExamination"
+            [compareWith]="compareOrganExamination"
+          >
+            <option [ngValue]="null"></option>
+            @for (organExaminationOption of organExaminationsCollection; track $index) {
+              <option [ngValue]="organExaminationOption">{{ organExaminationOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_patient" jhiTranslate="gatewayApp.microserviceMedicalRecord.patient">Patient</label>
+          <select
+            class="form-control"
+            id="field_patient"
+            data-cy="patient"
+            name="patient"
+            formControlName="patient"
+            [compareWith]="comparePatient"
+          >
+            @if (editForm.get(['patient'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (patientOption of patientsSharedCollection; track $index) {
+              <option [ngValue]="patientOption">{{ patientOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['patient'])!.invalid && (editForm.get(['patient'])!.dirty || editForm.get(['patient'])!.touched)) {
+          <div>
+            @if (editForm.get(['patient'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

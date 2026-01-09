@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "microserviceDisability": {
+      "home": {
+        "title": "Disabilities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Disability",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Disability",
+        "notFound": "No Disabilities found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Disability {{ id }}?"
+      },
+      "detail": {
+        "title": "Disability"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceDisability": {
+      "created": "Một Disability mới được tạo với định danh {{ param }}",
+      "updated": "Một Disability cập nhật với định danh {{ param }}",
+      "deleted": "Một Disability đã xóa với định danh {{ param }}"
+    }
+  }
+}

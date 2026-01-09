@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceFamilyDisease": {
+      "home": {
+        "title": "Family Diseases",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Family Disease",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Family Disease",
+        "notFound": "No Family Diseases found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Family Disease {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Disease"
+      },
+      "id": "ID",
+      "affectedPerson": "Affected Person",
+      "relationshipToPatient": "Relationship To Patient",
+      "disease": "Disease",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceFamilyDisease": {
+      "created": "Một Family Disease mới được tạo với định danh {{ param }}",
+      "updated": "Một Family Disease cập nhật với định danh {{ param }}",
+      "deleted": "Một Family Disease đã xóa với định danh {{ param }}"
+    }
+  }
+}

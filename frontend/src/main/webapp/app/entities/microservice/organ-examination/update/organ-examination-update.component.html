@@ -1,0 +1,229 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organ-examination-heading"
+        data-cy="OrganExaminationCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceOrganExamination.home.createOrEditLabel"
+      >
+        Create or edit a Organ Examination
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceOrganExamination.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cardiovascular" jhiTranslate="gatewayApp.microserviceOrganExamination.cardiovascular"
+            >Cardiovascular</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="cardiovascular"
+            id="field_cardiovascular"
+            data-cy="cardiovascular"
+            formControlName="cardiovascular"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_respiratory" jhiTranslate="gatewayApp.microserviceOrganExamination.respiratory"
+            >Respiratory</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="respiratory"
+            id="field_respiratory"
+            data-cy="respiratory"
+            formControlName="respiratory"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_digestive" jhiTranslate="gatewayApp.microserviceOrganExamination.digestive">Digestive</label>
+          <input type="text" class="form-control" name="digestive" id="field_digestive" data-cy="digestive" formControlName="digestive" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_urinary" jhiTranslate="gatewayApp.microserviceOrganExamination.urinary">Urinary</label>
+          <input type="text" class="form-control" name="urinary" id="field_urinary" data-cy="urinary" formControlName="urinary" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_musculoskeletal" jhiTranslate="gatewayApp.microserviceOrganExamination.musculoskeletal"
+            >Musculoskeletal</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="musculoskeletal"
+            id="field_musculoskeletal"
+            data-cy="musculoskeletal"
+            formControlName="musculoskeletal"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endocrine" jhiTranslate="gatewayApp.microserviceOrganExamination.endocrine">Endocrine</label>
+          <input type="text" class="form-control" name="endocrine" id="field_endocrine" data-cy="endocrine" formControlName="endocrine" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_neurological" jhiTranslate="gatewayApp.microserviceOrganExamination.neurological"
+            >Neurological</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="neurological"
+            id="field_neurological"
+            data-cy="neurological"
+            formControlName="neurological"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_psychiatric" jhiTranslate="gatewayApp.microserviceOrganExamination.psychiatric"
+            >Psychiatric</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="psychiatric"
+            id="field_psychiatric"
+            data-cy="psychiatric"
+            formControlName="psychiatric"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_surgery" jhiTranslate="gatewayApp.microserviceOrganExamination.surgery">Surgery</label>
+          <input type="text" class="form-control" name="surgery" id="field_surgery" data-cy="surgery" formControlName="surgery" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_obstetricsAndGynecology"
+            jhiTranslate="gatewayApp.microserviceOrganExamination.obstetricsAndGynecology"
+            >Obstetrics And Gynecology</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="obstetricsAndGynecology"
+            id="field_obstetricsAndGynecology"
+            data-cy="obstetricsAndGynecology"
+            formControlName="obstetricsAndGynecology"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_otolaryngology" jhiTranslate="gatewayApp.microserviceOrganExamination.otolaryngology"
+            >Otolaryngology</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="otolaryngology"
+            id="field_otolaryngology"
+            data-cy="otolaryngology"
+            formControlName="otolaryngology"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_dentistryAndMaxillofacialSurgery"
+            jhiTranslate="gatewayApp.microserviceOrganExamination.dentistryAndMaxillofacialSurgery"
+            >Dentistry And Maxillofacial Surgery</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dentistryAndMaxillofacialSurgery"
+            id="field_dentistryAndMaxillofacialSurgery"
+            data-cy="dentistryAndMaxillofacialSurgery"
+            formControlName="dentistryAndMaxillofacialSurgery"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_eye" jhiTranslate="gatewayApp.microserviceOrganExamination.eye">Eye</label>
+          <input type="text" class="form-control" name="eye" id="field_eye" data-cy="eye" formControlName="eye" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dermatology" jhiTranslate="gatewayApp.microserviceOrganExamination.dermatology"
+            >Dermatology</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="dermatology"
+            id="field_dermatology"
+            data-cy="dermatology"
+            formControlName="dermatology"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nutrition" jhiTranslate="gatewayApp.microserviceOrganExamination.nutrition">Nutrition</label>
+          <input type="text" class="form-control" name="nutrition" id="field_nutrition" data-cy="nutrition" formControlName="nutrition" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_exercise" jhiTranslate="gatewayApp.microserviceOrganExamination.exercise">Exercise</label>
+          <input type="text" class="form-control" name="exercise" id="field_exercise" data-cy="exercise" formControlName="exercise" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_other" jhiTranslate="gatewayApp.microserviceOrganExamination.other">Other</label>
+          <input type="text" class="form-control" name="other" id="field_other" data-cy="other" formControlName="other" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_developmentAssessment"
+            jhiTranslate="gatewayApp.microserviceOrganExamination.developmentAssessment"
+            >Development Assessment</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="developmentAssessment"
+            id="field_developmentAssessment"
+            data-cy="developmentAssessment"
+            formControlName="developmentAssessment"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

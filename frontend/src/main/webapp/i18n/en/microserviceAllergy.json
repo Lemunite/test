@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "microserviceAllergy": {
+      "home": {
+        "title": "Allergies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Allergy",
+        "createOrEditLabel": "Create or edit a Allergy",
+        "notFound": "No Allergies found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Allergy {{ id }}?"
+      },
+      "detail": {
+        "title": "Allergy"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceAllergy": {
+      "created": "A new Allergy is created with identifier {{ param }}",
+      "updated": "A Allergy is updated with identifier {{ param }}",
+      "deleted": "A Allergy is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,283 @@
+<div>
+  <h2 id="page-heading" data-cy="MedicalRecordHeading">
+    <span jhiTranslate="gatewayApp.microserviceMedicalRecord.home.title">Medical Records</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceMedicalRecord.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-medical-record"
+        [routerLink]="['/medical-record/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceMedicalRecord.home.createLabel">Create a new Medical Record</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (medicalRecords().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microserviceMedicalRecord.home.notFound">No Medical Records found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="examinationDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.examinationDate">Examination Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="medicalHistory">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.medicalHistory">Medical History</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="leftEyeNoGlass">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeNoGlass">Left Eye No Glass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="rightEyeNoGlass">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeNoGlass">Right Eye No Glass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="leftEyeWithGlass">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeWithGlass">Left Eye With Glass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="rightEyeWithGlass">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeWithGlass">Right Eye With Glass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pulse">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.pulse">Pulse</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="temperature">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.temperature">Temperature</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bloodPressure">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.bloodPressure">Blood Pressure</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="respiratoryRate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.respiratoryRate">Respiratory Rate</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="weight">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.weight">Weight</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="height">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.height">Height</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bmi">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.bmi">Bmi</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="waist">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.waist">Waist</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="skinMucosa">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.skinMucosa">Skin Mucosa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="other">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.other">Other</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="diseaseName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseName">Disease Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="diseaseCode">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseCode">Disease Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="advice">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.advice">Advice</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="docterName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.docterName">Docter Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="organExamination.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.organExamination">Organ Examination</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="patient.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceMedicalRecord.patient">Patient</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (medicalRecord of medicalRecords(); track trackId(medicalRecord)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/medical-record', medicalRecord.id, 'view']">{{ medicalRecord.id }}</a>
+              </td>
+              <td>{{ medicalRecord.examinationDate | formatMediumDate }}</td>
+              <td>{{ medicalRecord.medicalHistory }}</td>
+              <td>{{ medicalRecord.leftEyeNoGlass }}</td>
+              <td>{{ medicalRecord.rightEyeNoGlass }}</td>
+              <td>{{ medicalRecord.leftEyeWithGlass }}</td>
+              <td>{{ medicalRecord.rightEyeWithGlass }}</td>
+              <td>{{ medicalRecord.pulse }}</td>
+              <td>{{ medicalRecord.temperature }}</td>
+              <td>{{ medicalRecord.bloodPressure }}</td>
+              <td>{{ medicalRecord.respiratoryRate }}</td>
+              <td>{{ medicalRecord.weight }}</td>
+              <td>{{ medicalRecord.height }}</td>
+              <td>{{ medicalRecord.bmi }}</td>
+              <td>{{ medicalRecord.waist }}</td>
+              <td>{{ medicalRecord.skinMucosa }}</td>
+              <td>{{ medicalRecord.other }}</td>
+              <td>{{ medicalRecord.diseaseName }}</td>
+              <td>{{ medicalRecord.diseaseCode }}</td>
+              <td>{{ medicalRecord.advice }}</td>
+              <td>{{ medicalRecord.docterName }}</td>
+              <td>
+                @if (medicalRecord.organExamination) {
+                  <div>
+                    <a [routerLink]="['/organ-examination', medicalRecord.organExamination.id, 'view']">{{
+                      medicalRecord.organExamination.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (medicalRecord.patient) {
+                  <div>
+                    <a [routerLink]="['/patient', medicalRecord.patient.id, 'view']">{{ medicalRecord.patient.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/medical-record', medicalRecord.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/medical-record', medicalRecord.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(medicalRecord)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (medicalRecords().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

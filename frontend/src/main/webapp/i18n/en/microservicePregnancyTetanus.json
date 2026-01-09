@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "microservicePregnancyTetanus": {
+      "home": {
+        "title": "Pregnancy Tetanuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pregnancy Tetanus",
+        "createOrEditLabel": "Create or edit a Pregnancy Tetanus",
+        "notFound": "No Pregnancy Tetanuses found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Pregnancy Tetanus {{ id }}?"
+      },
+      "detail": {
+        "title": "Pregnancy Tetanus"
+      },
+      "id": "ID",
+      "dose": "Dose",
+      "notInjected": "Not Injected",
+      "injectionDate": "Injection Date",
+      "pregnancyMonth": "Pregnancy Month",
+      "reaction": "Reaction",
+      "nextAppointment": "Next Appointment",
+      "numberOfDosesReceived": "Number Of Doses Received",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microservicePregnancyTetanus": {
+      "created": "A new Pregnancy Tetanus is created with identifier {{ param }}",
+      "updated": "A Pregnancy Tetanus is updated with identifier {{ param }}",
+      "deleted": "A Pregnancy Tetanus is deleted with identifier {{ param }}"
+    }
+  }
+}

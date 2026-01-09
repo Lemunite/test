@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (familyAllergy(); as familyAllergyRef) {
+      <div>
+        <h2 data-cy="familyAllergyDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceFamilyAllergy.detail.title">Family Allergy</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ familyAllergyRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceFamilyAllergy.type">Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.AllergyType.' + (familyAllergyRef.type ?? 'null')">{{
+              { null: '', DRUGS: 'DRUGS', CHEMICALS: 'CHEMICALS', FOOD: 'FOOD', OTHER: 'OTHER' }[familyAllergyRef.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceFamilyAllergy.description">Description</span></dt>
+          <dd>
+            <span>{{ familyAllergyRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceFamilyAllergy.affectedPerson">Affected Person</span></dt>
+          <dd>
+            <span>{{ familyAllergyRef.affectedPerson }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceFamilyAllergy.patient">Patient</span></dt>
+          <dd>
+            @if (familyAllergy()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', familyAllergy()!.patient?.id, 'view']">{{ familyAllergyRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/family-allergy', familyAllergyRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

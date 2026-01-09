@@ -1,0 +1,249 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganExaminationHeading">
+    <span jhiTranslate="gatewayApp.microserviceOrganExamination.home.title">Organ Examinations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceOrganExamination.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organ-examination"
+        [routerLink]="['/organ-examination/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceOrganExamination.home.createLabel">Create a new Organ Examination</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (organExaminations().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microserviceOrganExamination.home.notFound">No Organ Examinations found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cardiovascular">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.cardiovascular">Cardiovascular</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="respiratory">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.respiratory">Respiratory</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="digestive">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.digestive">Digestive</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="urinary">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.urinary">Urinary</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="musculoskeletal">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.musculoskeletal">Musculoskeletal</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="endocrine">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.endocrine">Endocrine</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="neurological">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.neurological">Neurological</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="psychiatric">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.psychiatric">Psychiatric</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="surgery">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.surgery">Surgery</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="obstetricsAndGynecology">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.obstetricsAndGynecology">Obstetrics And Gynecology</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="otolaryngology">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.otolaryngology">Otolaryngology</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dentistryAndMaxillofacialSurgery">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.dentistryAndMaxillofacialSurgery"
+                  >Dentistry And Maxillofacial Surgery</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="eye">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.eye">Eye</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dermatology">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.dermatology">Dermatology</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nutrition">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.nutrition">Nutrition</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="exercise">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.exercise">Exercise</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="other">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.other">Other</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="developmentAssessment">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceOrganExamination.developmentAssessment">Development Assessment</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (organExamination of organExaminations(); track trackId(organExamination)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/organ-examination', organExamination.id, 'view']">{{ organExamination.id }}</a>
+              </td>
+              <td>{{ organExamination.cardiovascular }}</td>
+              <td>{{ organExamination.respiratory }}</td>
+              <td>{{ organExamination.digestive }}</td>
+              <td>{{ organExamination.urinary }}</td>
+              <td>{{ organExamination.musculoskeletal }}</td>
+              <td>{{ organExamination.endocrine }}</td>
+              <td>{{ organExamination.neurological }}</td>
+              <td>{{ organExamination.psychiatric }}</td>
+              <td>{{ organExamination.surgery }}</td>
+              <td>{{ organExamination.obstetricsAndGynecology }}</td>
+              <td>{{ organExamination.otolaryngology }}</td>
+              <td>{{ organExamination.dentistryAndMaxillofacialSurgery }}</td>
+              <td>{{ organExamination.eye }}</td>
+              <td>{{ organExamination.dermatology }}</td>
+              <td>{{ organExamination.nutrition }}</td>
+              <td>{{ organExamination.exercise }}</td>
+              <td>{{ organExamination.other }}</td>
+              <td>{{ organExamination.developmentAssessment }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/organ-examination', organExamination.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/organ-examination', organExamination.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(organExamination)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (organExaminations().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

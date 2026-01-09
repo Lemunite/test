@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "TypeToilet": {
+      "null": "",
+      "FLUSH": "FLUSH",
+      "DOUBLE": "DOUBLE",
+      "BARREL": "BARREL",
+      "NONE": "NONE"
+    }
+  }
+}

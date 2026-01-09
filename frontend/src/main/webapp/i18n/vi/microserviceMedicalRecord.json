@@ -1,0 +1,50 @@
+{
+  "gatewayApp": {
+    "microserviceMedicalRecord": {
+      "home": {
+        "title": "Medical Records",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Medical Record",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Medical Record",
+        "notFound": "No Medical Records found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Medical Record {{ id }}?"
+      },
+      "detail": {
+        "title": "Medical Record"
+      },
+      "id": "ID",
+      "examinationDate": "Examination Date",
+      "medicalHistory": "Medical History",
+      "leftEyeNoGlass": "Left Eye No Glass",
+      "rightEyeNoGlass": "Right Eye No Glass",
+      "leftEyeWithGlass": "Left Eye With Glass",
+      "rightEyeWithGlass": "Right Eye With Glass",
+      "pulse": "Pulse",
+      "temperature": "Temperature",
+      "bloodPressure": "Blood Pressure",
+      "respiratoryRate": "Respiratory Rate",
+      "weight": "Weight",
+      "height": "Height",
+      "bmi": "Bmi",
+      "waist": "Waist",
+      "skinMucosa": "Skin Mucosa",
+      "other": "Other",
+      "diseaseName": "Disease Name",
+      "diseaseCode": "Disease Code",
+      "advice": "Advice",
+      "docterName": "Docter Name",
+      "organExamination": "Organ Examination",
+      "paraclinicalResults": "Paraclinical Results",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceMedicalRecord": {
+      "created": "Một Medical Record mới được tạo với định danh {{ param }}",
+      "updated": "Một Medical Record cập nhật với định danh {{ param }}",
+      "deleted": "Một Medical Record đã xóa với định danh {{ param }}"
+    }
+  }
+}

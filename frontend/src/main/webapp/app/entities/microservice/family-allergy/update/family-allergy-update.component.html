@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-family-allergy-heading"
+        data-cy="FamilyAllergyCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceFamilyAllergy.home.createOrEditLabel"
+      >
+        Create or edit a Family Allergy
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceFamilyAllergy.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let typeRef = editForm.get('type')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_type" jhiTranslate="gatewayApp.microserviceFamilyAllergy.type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'gatewayApp.AllergyType.null' | translate }}</option>
+            @for (allergyType of allergyTypeValues; track $index) {
+              <option [value]="allergyType">{{ 'gatewayApp.AllergyType.' + allergyType | translate }}</option>
+            }
+          </select>
+          @if (typeRef.invalid && (typeRef.dirty || typeRef.touched)) {
+            <div>
+              @if (editForm.get('type')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_description" jhiTranslate="gatewayApp.microserviceFamilyAllergy.description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        @let affectedPersonRef = editForm.get('affectedPerson')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_affectedPerson" jhiTranslate="gatewayApp.microserviceFamilyAllergy.affectedPerson"
+            >Affected Person</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="affectedPerson"
+            id="field_affectedPerson"
+            data-cy="affectedPerson"
+            formControlName="affectedPerson"
+          />
+          @if (affectedPersonRef.invalid && (affectedPersonRef.dirty || affectedPersonRef.touched)) {
+            <div>
+              @if (editForm.get('affectedPerson')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_patient" jhiTranslate="gatewayApp.microserviceFamilyAllergy.patient">Patient</label>
+          <select
+            class="form-control"
+            id="field_patient"
+            data-cy="patient"
+            name="patient"
+            formControlName="patient"
+            [compareWith]="comparePatient"
+          >
+            @if (editForm.get(['patient'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (patientOption of patientsSharedCollection; track $index) {
+              <option [ngValue]="patientOption">{{ patientOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['patient'])!.invalid && (editForm.get(['patient'])!.dirty || editForm.get(['patient'])!.touched)) {
+          <div>
+            @if (editForm.get(['patient'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

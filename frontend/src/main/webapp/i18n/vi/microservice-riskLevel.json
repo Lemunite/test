@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "RiskLevel": {
+      "null": "",
+      "YES": "YES",
+      "NO": "NO",
+      "FREQUENT": "FREQUENT",
+      "STOPPED": "STOPPED"
+    }
+  }
+}

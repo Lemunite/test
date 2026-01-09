@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceFamilyAllergy": {
+      "home": {
+        "title": "Family Allergies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Family Allergy",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Family Allergy",
+        "notFound": "No Family Allergies found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Family Allergy {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Allergy"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "affectedPerson": "Affected Person",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceFamilyAllergy": {
+      "created": "Một Family Allergy mới được tạo với định danh {{ param }}",
+      "updated": "Một Family Allergy cập nhật với định danh {{ param }}",
+      "deleted": "Một Family Allergy đã xóa với định danh {{ param }}"
+    }
+  }
+}

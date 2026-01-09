@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (vaccinationTCMR(); as vaccinationTCMRRef) {
+      <div>
+        <h2 data-cy="vaccinationTCMRDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.detail.title">Vaccination TCMR</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.vaccine">Vaccine</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.VaccineTCMRType.' + (vaccinationTCMRRef.vaccine ?? 'null')">{{
+              {
+                null: '',
+                TA_1: 'TA_1',
+                TA_2: 'TA_2',
+                QUAI_BI_1: 'QUAI_BI_1',
+                QUAI_BI_2: 'QUAI_BI_2',
+                QUAI_BI_3: 'QUAI_BI_3',
+                CUM_1: 'CUM_1',
+                CUM_2: 'CUM_2',
+                CUM_3: 'CUM_3',
+                THUONG_HAN: 'THUONG_HAN',
+                HPV_1: 'HPV_1',
+                HPV_2: 'HPV_2',
+                HPV_3: 'HPV_3',
+                VAC_XIN_PHE_CAU_KHAN: 'VAC_XIN_PHE_CAU_KHAN',
+                OTHER: 'OTHER',
+              }[vaccinationTCMRRef.vaccine ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.notVaccinated">Not Vaccinated</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.notVaccinated }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.vaccinated">Vaccinated</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.vaccinated }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.injectionDate">Injection Date</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.injectionDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.reaction">Reaction</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.reaction }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.nextAppointment">Next Appointment</span></dt>
+          <dd>
+            <span>{{ vaccinationTCMRRef.nextAppointment | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.patient">Patient</span></dt>
+          <dd>
+            @if (vaccinationTCMR()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', vaccinationTCMR()!.patient?.id, 'view']">{{ vaccinationTCMRRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/vaccination-tcmr', vaccinationTCMRRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

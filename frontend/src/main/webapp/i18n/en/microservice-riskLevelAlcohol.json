@@ -1,0 +1,10 @@
+{
+  "gatewayApp": {
+    "RiskLevelAlcohol": {
+      "null": "",
+      "YES": "YES",
+      "NO": "NO",
+      "DROPPED": "DROPPED"
+    }
+  }
+}

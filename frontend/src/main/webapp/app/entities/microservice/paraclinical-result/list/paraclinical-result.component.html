@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="ParaclinicalResultHeading">
+    <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.home.title">Paraclinical Results</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-paraclinical-result"
+        [routerLink]="['/paraclinical-result/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.home.createLabel">Create a new Paraclinical Result</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (paraclinicalResults().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.home.notFound">No Paraclinical Results found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="testName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.testName">Test Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="result">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.result">Result</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="resultDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.resultDate">Result Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="medicalRecord.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.medicalRecord">Medical Record</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (paraclinicalResult of paraclinicalResults(); track trackId(paraclinicalResult)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/paraclinical-result', paraclinicalResult.id, 'view']">{{ paraclinicalResult.id }}</a>
+              </td>
+              <td>{{ paraclinicalResult.testName }}</td>
+              <td>{{ paraclinicalResult.result }}</td>
+              <td>{{ paraclinicalResult.resultDate | formatMediumDate }}</td>
+              <td>
+                @if (paraclinicalResult.medicalRecord) {
+                  <div>
+                    <a [routerLink]="['/medical-record', paraclinicalResult.medicalRecord.id, 'view']">{{
+                      paraclinicalResult.medicalRecord.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/paraclinical-result', paraclinicalResult.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/paraclinical-result', paraclinicalResult.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(paraclinicalResult)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (paraclinicalResults().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

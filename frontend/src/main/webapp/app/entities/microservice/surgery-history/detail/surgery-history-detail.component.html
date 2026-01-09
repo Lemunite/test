@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (surgeryHistory(); as surgeryHistoryRef) {
+      <div>
+        <h2 data-cy="surgeryHistoryDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceSurgeryHistory.detail.title">Surgery History</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ surgeryHistoryRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceSurgeryHistory.bodyPart">Body Part</span></dt>
+          <dd>
+            <span>{{ surgeryHistoryRef.bodyPart }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceSurgeryHistory.surgeryYear">Surgery Year</span></dt>
+          <dd>
+            <span>{{ surgeryHistoryRef.surgeryYear }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceSurgeryHistory.note">Note</span></dt>
+          <dd>
+            <span>{{ surgeryHistoryRef.note }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceSurgeryHistory.patient">Patient</span></dt>
+          <dd>
+            @if (surgeryHistory()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', surgeryHistory()!.patient?.id, 'view']">{{ surgeryHistoryRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/surgery-history', surgeryHistoryRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

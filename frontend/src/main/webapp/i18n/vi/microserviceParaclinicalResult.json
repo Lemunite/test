@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceParaclinicalResult": {
+      "home": {
+        "title": "Paraclinical Results",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Paraclinical Result",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Paraclinical Result",
+        "notFound": "No Paraclinical Results found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Paraclinical Result {{ id }}?"
+      },
+      "detail": {
+        "title": "Paraclinical Result"
+      },
+      "id": "ID",
+      "testName": "Test Name",
+      "result": "Result",
+      "resultDate": "Result Date",
+      "medicalRecord": "Medical Record"
+    }
+  },
+  "microserviceApp": {
+    "microserviceParaclinicalResult": {
+      "created": "Một Paraclinical Result mới được tạo với định danh {{ param }}",
+      "updated": "Một Paraclinical Result cập nhật với định danh {{ param }}",
+      "deleted": "Một Paraclinical Result đã xóa với định danh {{ param }}"
+    }
+  }
+}

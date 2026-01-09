@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (allergy(); as allergyRef) {
+      <div>
+        <h2 data-cy="allergyDetailsHeading"><span jhiTranslate="gatewayApp.microserviceAllergy.detail.title">Allergy</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ allergyRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAllergy.type">Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.AllergyType.' + (allergyRef.type ?? 'null')">{{
+              { null: '', DRUGS: 'DRUGS', CHEMICALS: 'CHEMICALS', FOOD: 'FOOD', OTHER: 'OTHER' }[allergyRef.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAllergy.description">Description</span></dt>
+          <dd>
+            <span>{{ allergyRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAllergy.patient">Patient</span></dt>
+          <dd>
+            @if (allergy()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', allergy()!.patient?.id, 'view']">{{ allergyRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/allergy', allergyRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

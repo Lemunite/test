@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceParaclinicalResult": {
+      "home": {
+        "title": "Paraclinical Results",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Paraclinical Result",
+        "createOrEditLabel": "Create or edit a Paraclinical Result",
+        "notFound": "No Paraclinical Results found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Paraclinical Result {{ id }}?"
+      },
+      "detail": {
+        "title": "Paraclinical Result"
+      },
+      "id": "ID",
+      "testName": "Test Name",
+      "result": "Result",
+      "resultDate": "Result Date",
+      "medicalRecord": "Medical Record"
+    }
+  },
+  "microserviceApp": {
+    "microserviceParaclinicalResult": {
+      "created": "A new Paraclinical Result is created with identifier {{ param }}",
+      "updated": "A Paraclinical Result is updated with identifier {{ param }}",
+      "deleted": "A Paraclinical Result is deleted with identifier {{ param }}"
+    }
+  }
+}

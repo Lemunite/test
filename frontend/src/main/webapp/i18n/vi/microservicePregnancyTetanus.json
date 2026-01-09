@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "microservicePregnancyTetanus": {
+      "home": {
+        "title": "Pregnancy Tetanuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Pregnancy Tetanus",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Pregnancy Tetanus",
+        "notFound": "No Pregnancy Tetanuses found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Pregnancy Tetanus {{ id }}?"
+      },
+      "detail": {
+        "title": "Pregnancy Tetanus"
+      },
+      "id": "ID",
+      "dose": "Dose",
+      "notInjected": "Not Injected",
+      "injectionDate": "Injection Date",
+      "pregnancyMonth": "Pregnancy Month",
+      "reaction": "Reaction",
+      "nextAppointment": "Next Appointment",
+      "numberOfDosesReceived": "Number Of Doses Received",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microservicePregnancyTetanus": {
+      "created": "Một Pregnancy Tetanus mới được tạo với định danh {{ param }}",
+      "updated": "Một Pregnancy Tetanus cập nhật với định danh {{ param }}",
+      "deleted": "Một Pregnancy Tetanus đã xóa với định danh {{ param }}"
+    }
+  }
+}

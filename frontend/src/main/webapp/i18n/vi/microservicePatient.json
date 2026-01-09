@@ -1,0 +1,69 @@
+{
+  "gatewayApp": {
+    "microservicePatient": {
+      "home": {
+        "title": "Patients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Patient",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Patient",
+        "notFound": "No Patients found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Patient {{ id }}?"
+      },
+      "detail": {
+        "title": "Patient"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "gender": "Gender",
+      "dateOfBirth": "Date Of Birth",
+      "placeOfBirth": "Place Of Birth",
+      "bloodTypeAbo": "Blood Type Abo",
+      "bloodTypeRh": "Blood Type Rh",
+      "ethnic": "Ethnic",
+      "nationality": "Nationality",
+      "religion": "Religion",
+      "job": "Job",
+      "idNumber": "Id Number",
+      "idIssueDate": "Id Issue Date",
+      "idIssuePlace": "Id Issue Place",
+      "healthInsuranceNumber": "Health Insurance Number",
+      "permanentAddress": "Permanent Address",
+      "permanentWard": "Permanent Ward",
+      "permanentDistrict": "Permanent District",
+      "permanentProvince": "Permanent Province",
+      "currentAddress": "Current Address",
+      "currentWard": "Current Ward",
+      "currentDistrict": "Current District",
+      "currentProvince": "Current Province",
+      "landlinePhone": "Landline Phone",
+      "mobilePhone": "Mobile Phone",
+      "email": "Email",
+      "motherName": "Mother Name",
+      "fatherName": "Father Name",
+      "caregiverName": "Caregiver Name",
+      "caregiverRelation": "Caregiver Relation",
+      "caregiverLandlinePhone": "Caregiver Landline Phone",
+      "caregiverMobilePhone": "Caregiver Mobile Phone",
+      "familyCode": "Family Code",
+      "additionalInfo": "Additional Info",
+      "vaccinationsForBaby": "Vaccinations For Baby",
+      "allergies": "Allergies",
+      "disabilities": "Disabilities",
+      "surgeryHistories": "Surgery Histories",
+      "familyAllergies": "Family Allergies",
+      "familyDiseases": "Family Diseases",
+      "vaccinationsTCMR": "Vaccinations TCMR",
+      "pregnancyTetanus": "Pregnancy Tetanus",
+      "medicalRecords": "Medical Records"
+    }
+  },
+  "microserviceApp": {
+    "microservicePatient": {
+      "created": "Một Patient mới được tạo với định danh {{ param }}",
+      "updated": "Một Patient cập nhật với định danh {{ param }}",
+      "deleted": "Một Patient đã xóa với định danh {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "microserviceVaccine": {
+      "home": {
+        "title": "Vaccines",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vaccine",
+        "createOrEditLabel": "Create or edit a Vaccine",
+        "notFound": "No Vaccines found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Vaccine {{ id }}?"
+      },
+      "detail": {
+        "title": "Vaccine"
+      },
+      "id": "ID",
+      "name": "Name",
+      "notVaccinated": "Not Vaccinated",
+      "injectionDate": "Injection Date",
+      "reaction": "Reaction",
+      "nextAppointment": "Next Appointment",
+      "vaccinationForBaby": "Vaccination For Baby"
+    }
+  },
+  "microserviceApp": {
+    "microserviceVaccine": {
+      "created": "A new Vaccine is created with identifier {{ param }}",
+      "updated": "A Vaccine is updated with identifier {{ param }}",
+      "deleted": "A Vaccine is deleted with identifier {{ param }}"
+    }
+  }
+}

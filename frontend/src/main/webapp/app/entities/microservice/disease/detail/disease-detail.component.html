@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (disease(); as diseaseRef) {
+      <div>
+        <h2 data-cy="diseaseDetailsHeading"><span jhiTranslate="gatewayApp.microserviceDisease.detail.title">Disease</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ diseaseRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceDisease.name">Name</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.DiseaseName.' + (diseaseRef.name ?? 'null')">{{
+              {
+                null: '',
+                HEART: 'HEART',
+                BLOOD_PRESSURE: 'BLOOD_PRESSURE',
+                MENTAL: 'MENTAL',
+                ASTHMA: 'ASTHMA',
+                DIABETES: 'DIABETES',
+                EPILEPSY: 'EPILEPSY',
+                CANCER: 'CANCER',
+                TUBERCULOSIS: 'TUBERCULOSIS',
+                OTHER: 'OTHER',
+              }[diseaseRef.name ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceDisease.specificType">Specific Type</span></dt>
+          <dd>
+            <span>{{ diseaseRef.specificType }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceDisease.description">Description</span></dt>
+          <dd>
+            <span>{{ diseaseRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceDisease.familyDisease">Family Disease</span></dt>
+          <dd>
+            @if (disease()!.familyDisease) {
+              <div>
+                <a [routerLink]="['/family-disease', disease()!.familyDisease?.id, 'view']">{{ diseaseRef.familyDisease?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/disease', diseaseRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

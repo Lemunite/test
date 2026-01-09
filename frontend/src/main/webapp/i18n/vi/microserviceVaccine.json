@@ -1,0 +1,33 @@
+{
+  "gatewayApp": {
+    "microserviceVaccine": {
+      "home": {
+        "title": "Vaccines",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Vaccine",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Vaccine",
+        "notFound": "No Vaccines found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Vaccine {{ id }}?"
+      },
+      "detail": {
+        "title": "Vaccine"
+      },
+      "id": "ID",
+      "name": "Name",
+      "notVaccinated": "Not Vaccinated",
+      "injectionDate": "Injection Date",
+      "reaction": "Reaction",
+      "nextAppointment": "Next Appointment",
+      "vaccinationForBaby": "Vaccination For Baby"
+    }
+  },
+  "microserviceApp": {
+    "microserviceVaccine": {
+      "created": "Một Vaccine mới được tạo với định danh {{ param }}",
+      "updated": "Một Vaccine cập nhật với định danh {{ param }}",
+      "deleted": "Một Vaccine đã xóa với định danh {{ param }}"
+    }
+  }
+}

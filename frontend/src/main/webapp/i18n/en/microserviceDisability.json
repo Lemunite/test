@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "microserviceDisability": {
+      "home": {
+        "title": "Disabilities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Disability",
+        "createOrEditLabel": "Create or edit a Disability",
+        "notFound": "No Disabilities found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Disability {{ id }}?"
+      },
+      "detail": {
+        "title": "Disability"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceDisability": {
+      "created": "A new Disability is created with identifier {{ param }}",
+      "updated": "A Disability is updated with identifier {{ param }}",
+      "deleted": "A Disability is deleted with identifier {{ param }}"
+    }
+  }
+}

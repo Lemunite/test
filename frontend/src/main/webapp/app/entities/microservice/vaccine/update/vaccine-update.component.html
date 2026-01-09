@@ -1,0 +1,150 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vaccine-heading"
+        data-cy="VaccineCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceVaccine.home.createOrEditLabel"
+      >
+        Create or edit a Vaccine
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceVaccine.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let nameRef = editForm.get('name')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_name" jhiTranslate="gatewayApp.microserviceVaccine.name">Name</label>
+          <select class="form-control" name="name" formControlName="name" id="field_name" data-cy="name">
+            <option [ngValue]="null">{{ 'gatewayApp.VaccineType.null' | translate }}</option>
+            @for (vaccineType of vaccineTypeValues; track $index) {
+              <option [value]="vaccineType">{{ 'gatewayApp.VaccineType.' + vaccineType | translate }}</option>
+            }
+          </select>
+          @if (nameRef.invalid && (nameRef.dirty || nameRef.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_notVaccinated" jhiTranslate="gatewayApp.microserviceVaccine.notVaccinated"
+            >Not Vaccinated</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="notVaccinated"
+            id="field_notVaccinated"
+            data-cy="notVaccinated"
+            formControlName="notVaccinated"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_injectionDate" jhiTranslate="gatewayApp.microserviceVaccine.injectionDate"
+            >Injection Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_injectionDate"
+              data-cy="injectionDate"
+              type="text"
+              class="form-control"
+              name="injectionDate"
+              ngbDatepicker
+              #injectionDateDp="ngbDatepicker"
+              formControlName="injectionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="injectionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_reaction" jhiTranslate="gatewayApp.microserviceVaccine.reaction">Reaction</label>
+          <input type="text" class="form-control" name="reaction" id="field_reaction" data-cy="reaction" formControlName="reaction" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nextAppointment" jhiTranslate="gatewayApp.microserviceVaccine.nextAppointment"
+            >Next Appointment</label
+          >
+          <div class="input-group">
+            <input
+              id="field_nextAppointment"
+              data-cy="nextAppointment"
+              type="text"
+              class="form-control"
+              name="nextAppointment"
+              ngbDatepicker
+              #nextAppointmentDp="ngbDatepicker"
+              formControlName="nextAppointment"
+            />
+            <button type="button" class="btn btn-secondary" (click)="nextAppointmentDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vaccinationForBaby" jhiTranslate="gatewayApp.microserviceVaccine.vaccinationForBaby"
+            >Vaccination For Baby</label
+          >
+          <select
+            class="form-control"
+            id="field_vaccinationForBaby"
+            data-cy="vaccinationForBaby"
+            name="vaccinationForBaby"
+            formControlName="vaccinationForBaby"
+            [compareWith]="compareVaccinationForBaby"
+          >
+            @if (editForm.get(['vaccinationForBaby'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (vaccinationForBabyOption of vaccinationForBabiesSharedCollection; track $index) {
+              <option [ngValue]="vaccinationForBabyOption">{{ vaccinationForBabyOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['vaccinationForBaby'])!.invalid &&
+          (editForm.get(['vaccinationForBaby'])!.dirty || editForm.get(['vaccinationForBaby'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['vaccinationForBaby'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

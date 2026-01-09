@@ -1,0 +1,46 @@
+{
+  "gatewayApp": {
+    "microserviceOrganExamination": {
+      "home": {
+        "title": "Organ Examinations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Organ Examination",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Organ Examination",
+        "notFound": "No Organ Examinations found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Organ Examination {{ id }}?"
+      },
+      "detail": {
+        "title": "Organ Examination"
+      },
+      "id": "ID",
+      "cardiovascular": "Cardiovascular",
+      "respiratory": "Respiratory",
+      "digestive": "Digestive",
+      "urinary": "Urinary",
+      "musculoskeletal": "Musculoskeletal",
+      "endocrine": "Endocrine",
+      "neurological": "Neurological",
+      "psychiatric": "Psychiatric",
+      "surgery": "Surgery",
+      "obstetricsAndGynecology": "Obstetrics And Gynecology",
+      "otolaryngology": "Otolaryngology",
+      "dentistryAndMaxillofacialSurgery": "Dentistry And Maxillofacial Surgery",
+      "eye": "Eye",
+      "dermatology": "Dermatology",
+      "nutrition": "Nutrition",
+      "exercise": "Exercise",
+      "other": "Other",
+      "developmentAssessment": "Development Assessment",
+      "medicalRecord": "Medical Record"
+    }
+  },
+  "microserviceApp": {
+    "microserviceOrganExamination": {
+      "created": "Một Organ Examination mới được tạo với định danh {{ param }}",
+      "updated": "Một Organ Examination cập nhật với định danh {{ param }}",
+      "deleted": "Một Organ Examination đã xóa với định danh {{ param }}"
+    }
+  }
+}

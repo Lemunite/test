@@ -1,0 +1,71 @@
+{
+  "gatewayApp": {
+    "microserviceAdditionalInformation": {
+      "home": {
+        "title": "Additional Informations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Additional Information",
+        "createOrEditLabel": "Create or edit a Additional Information",
+        "notFound": "No Additional Informations found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Additional Information {{ id }}?"
+      },
+      "detail": {
+        "title": "Additional Information"
+      },
+      "id": "ID",
+      "smoking": "Smoking",
+      "alcoholRiskLevel": "Alcohol Risk Level",
+      "alcoholGlassesPerDay": "Alcohol Glasses Per Day",
+      "drugUse": "Drug Use",
+      "physicalActivity": "Physical Activity",
+      "exposureFactor": "Exposure Factor",
+      "exposureDate": "Exposure Date",
+      "typeToilet": "Type Toilet",
+      "environmentalRisk": "Environmental Risk",
+      "cardiovascularDisease": "Cardiovascular Disease",
+      "hypertension": "Hypertension",
+      "diabetes": "Diabetes",
+      "stomachDisease": "Stomach Disease",
+      "chronicLungDisease": "Chronic Lung Disease",
+      "asthma": "Asthma",
+      "goiter": "Goiter",
+      "hepatitis": "Hepatitis",
+      "congenitalHeartDisease": "Congenital Heart Disease",
+      "mentalDisorders": "Mental Disorders",
+      "autism": "Autism",
+      "epilepsy": "Epilepsy",
+      "cancer": "Cancer",
+      "tuberculosis": "Tuberculosis",
+      "otherDiseases": "Other Diseases",
+      "contraceptiveMethod": "Contraceptive Method",
+      "lastPregnancy": "Last Pregnancy",
+      "numberOfPregnancies": "Number Of Pregnancies",
+      "numberOfMiscarriages": "Number Of Miscarriages",
+      "numberOfAbortions": "Number Of Abortions",
+      "numberOfBirths": "Number Of Births",
+      "vaginalDelivery": "Vaginal Delivery",
+      "cesareanSection": "Cesarean Section",
+      "difficultDelivery": "Difficult Delivery",
+      "numberOfFullTermBirths": "Number Of Full Term Births",
+      "numberOfPrematureBirths": "Number Of Premature Births",
+      "numberOfChildrenAlive": "Number Of Children Alive",
+      "gynecologicalDiseases": "Gynecological Diseases",
+      "birthStatus": "Birth Status",
+      "birthWeight": "Birth Weight",
+      "birthHeight": "Birth Height",
+      "birthDefectNote": "Birth Defect Note",
+      "otherBirthNote": "Other Birth Note",
+      "otherHealthNote": "Other Health Note",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceAdditionalInformation": {
+      "created": "A new Additional Information is created with identifier {{ param }}",
+      "updated": "A Additional Information is updated with identifier {{ param }}",
+      "deleted": "A Additional Information is deleted with identifier {{ param }}"
+    }
+  }
+}

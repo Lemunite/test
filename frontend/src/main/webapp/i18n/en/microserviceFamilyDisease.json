@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceFamilyDisease": {
+      "home": {
+        "title": "Family Diseases",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Family Disease",
+        "createOrEditLabel": "Create or edit a Family Disease",
+        "notFound": "No Family Diseases found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Family Disease {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Disease"
+      },
+      "id": "ID",
+      "affectedPerson": "Affected Person",
+      "relationshipToPatient": "Relationship To Patient",
+      "disease": "Disease",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceFamilyDisease": {
+      "created": "A new Family Disease is created with identifier {{ param }}",
+      "updated": "A Family Disease is updated with identifier {{ param }}",
+      "deleted": "A Family Disease is deleted with identifier {{ param }}"
+    }
+  }
+}

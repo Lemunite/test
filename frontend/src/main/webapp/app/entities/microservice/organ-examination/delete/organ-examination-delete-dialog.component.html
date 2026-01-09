@@ -1,0 +1,28 @@
+@if (organExamination) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(organExamination.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="organExaminationDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error />
+      <p
+        id="jhi-delete-organExamination-heading"
+        jhiTranslate="gatewayApp.microserviceOrganExamination.delete.question"
+        [translateValues]="{ id: organExamination.id }"
+      >
+        Are you sure you want to delete Organ Examination {{ organExamination.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-organExamination" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

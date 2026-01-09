@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceSurgeryHistory": {
+      "home": {
+        "title": "Surgery Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Surgery History",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Surgery History",
+        "notFound": "No Surgery Histories found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Surgery History {{ id }}?"
+      },
+      "detail": {
+        "title": "Surgery History"
+      },
+      "id": "ID",
+      "bodyPart": "Body Part",
+      "surgeryYear": "Surgery Year",
+      "note": "Note",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceSurgeryHistory": {
+      "created": "Một Surgery History mới được tạo với định danh {{ param }}",
+      "updated": "Một Surgery History cập nhật với định danh {{ param }}",
+      "deleted": "Một Surgery History đã xóa với định danh {{ param }}"
+    }
+  }
+}

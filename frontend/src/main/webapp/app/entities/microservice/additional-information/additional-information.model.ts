@@ -1,0 +1,54 @@
+import dayjs from 'dayjs/esm';
+import { RiskLevel } from 'app/entities/enumerations/risk-level.model';
+import { RiskLevelAlcohol } from 'app/entities/enumerations/risk-level-alcohol.model';
+import { TypeToilet } from 'app/entities/enumerations/type-toilet.model';
+import { BirthStatusType } from 'app/entities/enumerations/birth-status-type.model';
+
+export interface IAdditionalInformation {
+  id: number;
+  smoking?: keyof typeof RiskLevel | null;
+  alcoholRiskLevel?: keyof typeof RiskLevelAlcohol | null;
+  alcoholGlassesPerDay?: number | null;
+  drugUse?: keyof typeof RiskLevel | null;
+  physicalActivity?: keyof typeof RiskLevel | null;
+  exposureFactor?: string | null;
+  exposureDate?: dayjs.Dayjs | null;
+  typeToilet?: keyof typeof TypeToilet | null;
+  environmentalRisk?: string | null;
+  cardiovascularDisease?: boolean | null;
+  hypertension?: boolean | null;
+  diabetes?: boolean | null;
+  stomachDisease?: boolean | null;
+  chronicLungDisease?: boolean | null;
+  asthma?: boolean | null;
+  goiter?: boolean | null;
+  hepatitis?: boolean | null;
+  congenitalHeartDisease?: boolean | null;
+  mentalDisorders?: boolean | null;
+  autism?: boolean | null;
+  epilepsy?: boolean | null;
+  cancer?: string | null;
+  tuberculosis?: string | null;
+  otherDiseases?: string | null;
+  contraceptiveMethod?: string | null;
+  lastPregnancy?: number | null;
+  numberOfPregnancies?: number | null;
+  numberOfMiscarriages?: number | null;
+  numberOfAbortions?: number | null;
+  numberOfBirths?: number | null;
+  vaginalDelivery?: number | null;
+  cesareanSection?: number | null;
+  difficultDelivery?: number | null;
+  numberOfFullTermBirths?: number | null;
+  numberOfPrematureBirths?: number | null;
+  numberOfChildrenAlive?: number | null;
+  gynecologicalDiseases?: string | null;
+  birthStatus?: keyof typeof BirthStatusType | null;
+  birthWeight?: number | null;
+  birthHeight?: number | null;
+  birthDefectNote?: string | null;
+  otherBirthNote?: string | null;
+  otherHealthNote?: string | null;
+}
+
+export type NewAdditionalInformation = Omit<IAdditionalInformation, 'id'> & { id: null };

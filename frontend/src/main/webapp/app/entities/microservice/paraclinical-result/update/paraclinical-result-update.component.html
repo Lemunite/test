@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-paraclinical-result-heading"
+        data-cy="ParaclinicalResultCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceParaclinicalResult.home.createOrEditLabel"
+      >
+        Create or edit a Paraclinical Result
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceParaclinicalResult.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let testNameRef = editForm.get('testName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_testName" jhiTranslate="gatewayApp.microserviceParaclinicalResult.testName">Test Name</label>
+          <input type="text" class="form-control" name="testName" id="field_testName" data-cy="testName" formControlName="testName" />
+          @if (testNameRef.invalid && (testNameRef.dirty || testNameRef.touched)) {
+            <div>
+              @if (editForm.get('testName')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_result" jhiTranslate="gatewayApp.microserviceParaclinicalResult.result">Result</label>
+          <textarea class="form-control" name="result" id="field_result" data-cy="result" formControlName="result"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_resultDate" jhiTranslate="gatewayApp.microserviceParaclinicalResult.resultDate"
+            >Result Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_resultDate"
+              data-cy="resultDate"
+              type="text"
+              class="form-control"
+              name="resultDate"
+              ngbDatepicker
+              #resultDateDp="ngbDatepicker"
+              formControlName="resultDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="resultDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_medicalRecord" jhiTranslate="gatewayApp.microserviceParaclinicalResult.medicalRecord"
+            >Medical Record</label
+          >
+          <select
+            class="form-control"
+            id="field_medicalRecord"
+            data-cy="medicalRecord"
+            name="medicalRecord"
+            formControlName="medicalRecord"
+            [compareWith]="compareMedicalRecord"
+          >
+            @if (editForm.get(['medicalRecord'])!.value === null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (medicalRecordOption of medicalRecordsSharedCollection; track $index) {
+              <option [ngValue]="medicalRecordOption">{{ medicalRecordOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['medicalRecord'])!.invalid && (editForm.get(['medicalRecord'])!.dirty || editForm.get(['medicalRecord'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['medicalRecord'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

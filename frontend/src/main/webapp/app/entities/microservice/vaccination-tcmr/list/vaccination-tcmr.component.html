@@ -1,0 +1,184 @@
+<div>
+  <h2 id="page-heading" data-cy="VaccinationTCMRHeading">
+    <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.home.title">Vaccination TCMRS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vaccination-tcmr"
+        [routerLink]="['/vaccination-tcmr/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.home.createLabel">Create a new Vaccination TCMR</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (vaccinationTCMRS().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.home.notFound">No Vaccination TCMRS found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vaccine">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.vaccine">Vaccine</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="notVaccinated">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.notVaccinated">Not Vaccinated</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vaccinated">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.vaccinated">Vaccinated</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="injectionDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.injectionDate">Injection Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="reaction">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.reaction">Reaction</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nextAppointment">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.nextAppointment">Next Appointment</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="patient.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceVaccinationTcmr.patient">Patient</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vaccinationTCMR of vaccinationTCMRS(); track trackId(vaccinationTCMR)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/vaccination-tcmr', vaccinationTCMR.id, 'view']">{{ vaccinationTCMR.id }}</a>
+              </td>
+              <td [jhiTranslate]="'gatewayApp.VaccineTCMRType.' + (vaccinationTCMR.vaccine ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    TA_1: 'TA_1',
+                    TA_2: 'TA_2',
+                    QUAI_BI_1: 'QUAI_BI_1',
+                    QUAI_BI_2: 'QUAI_BI_2',
+                    QUAI_BI_3: 'QUAI_BI_3',
+                    CUM_1: 'CUM_1',
+                    CUM_2: 'CUM_2',
+                    CUM_3: 'CUM_3',
+                    THUONG_HAN: 'THUONG_HAN',
+                    HPV_1: 'HPV_1',
+                    HPV_2: 'HPV_2',
+                    HPV_3: 'HPV_3',
+                    VAC_XIN_PHE_CAU_KHAN: 'VAC_XIN_PHE_CAU_KHAN',
+                    OTHER: 'OTHER',
+                  }[vaccinationTCMR.vaccine ?? 'null']
+                }}
+              </td>
+              <td>{{ vaccinationTCMR.notVaccinated }}</td>
+              <td>{{ vaccinationTCMR.vaccinated }}</td>
+              <td>{{ vaccinationTCMR.injectionDate | formatMediumDate }}</td>
+              <td>{{ vaccinationTCMR.reaction }}</td>
+              <td>{{ vaccinationTCMR.nextAppointment | formatMediumDate }}</td>
+              <td>
+                @if (vaccinationTCMR.patient) {
+                  <div>
+                    <a [routerLink]="['/patient', vaccinationTCMR.patient.id, 'view']">{{ vaccinationTCMR.patient.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/vaccination-tcmr', vaccinationTCMR.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/vaccination-tcmr', vaccinationTCMR.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(vaccinationTCMR)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (vaccinationTCMRS().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

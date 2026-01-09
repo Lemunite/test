@@ -1,0 +1,174 @@
+<div>
+  <h2 id="page-heading" data-cy="PregnancyTetanusHeading">
+    <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.home.title">Pregnancy Tetanuses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pregnancy-tetanus"
+        [routerLink]="['/pregnancy-tetanus/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.home.createLabel">Create a new Pregnancy Tetanus</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (pregnancyTetanuses().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.home.notFound">No Pregnancy Tetanuses found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dose">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.dose">Dose</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="notInjected">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.notInjected">Not Injected</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="injectionDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.injectionDate">Injection Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pregnancyMonth">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.pregnancyMonth">Pregnancy Month</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="reaction">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.reaction">Reaction</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nextAppointment">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.nextAppointment">Next Appointment</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfDosesReceived">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.numberOfDosesReceived">Number Of Doses Received</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="patient.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePregnancyTetanus.patient">Patient</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pregnancyTetanus of pregnancyTetanuses(); track trackId(pregnancyTetanus)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/pregnancy-tetanus', pregnancyTetanus.id, 'view']">{{ pregnancyTetanus.id }}</a>
+              </td>
+              <td [jhiTranslate]="'gatewayApp.TetanusDose.' + (pregnancyTetanus.dose ?? 'null')">
+                {{ { null: '', UV1: 'UV1', UV2: 'UV2', UV3: 'UV3', UV4: 'UV4', UV5: 'UV5' }[pregnancyTetanus.dose ?? 'null'] }}
+              </td>
+              <td>{{ pregnancyTetanus.notInjected }}</td>
+              <td>{{ pregnancyTetanus.injectionDate | formatMediumDate }}</td>
+              <td>{{ pregnancyTetanus.pregnancyMonth }}</td>
+              <td>{{ pregnancyTetanus.reaction }}</td>
+              <td>{{ pregnancyTetanus.nextAppointment | formatMediumDate }}</td>
+              <td>{{ pregnancyTetanus.numberOfDosesReceived }}</td>
+              <td>
+                @if (pregnancyTetanus.patient) {
+                  <div>
+                    <a [routerLink]="['/patient', pregnancyTetanus.patient.id, 'view']">{{ pregnancyTetanus.patient.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/pregnancy-tetanus', pregnancyTetanus.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/pregnancy-tetanus', pregnancyTetanus.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(pregnancyTetanus)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (pregnancyTetanuses().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

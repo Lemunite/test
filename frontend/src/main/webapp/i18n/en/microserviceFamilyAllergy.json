@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "microserviceFamilyAllergy": {
+      "home": {
+        "title": "Family Allergies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Family Allergy",
+        "createOrEditLabel": "Create or edit a Family Allergy",
+        "notFound": "No Family Allergies found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Family Allergy {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Allergy"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "affectedPerson": "Affected Person",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceFamilyAllergy": {
+      "created": "A new Family Allergy is created with identifier {{ param }}",
+      "updated": "A Family Allergy is updated with identifier {{ param }}",
+      "deleted": "A Family Allergy is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "AllergyType": {
+      "null": "",
+      "DRUGS": "DRUGS",
+      "CHEMICALS": "CHEMICALS",
+      "FOOD": "FOOD",
+      "OTHER": "OTHER"
+    }
+  }
+}

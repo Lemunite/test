@@ -1,0 +1,469 @@
+<div>
+  <h2 id="page-heading" data-cy="AdditionalInformationHeading">
+    <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.home.title">Additional Informations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-additional-information"
+        [routerLink]="['/additional-information/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.home.createLabel">Create a new Additional Information</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (additionalInformations().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.home.notFound">No Additional Informations found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="smoking">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.smoking">Smoking</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="alcoholRiskLevel">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholRiskLevel">Alcohol Risk Level</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="alcoholGlassesPerDay">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholGlassesPerDay">Alcohol Glasses Per Day</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="drugUse">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.drugUse">Drug Use</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="physicalActivity">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.physicalActivity">Physical Activity</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="exposureFactor">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureFactor">Exposure Factor</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="exposureDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureDate">Exposure Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typeToilet">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.typeToilet">Type Toilet</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="environmentalRisk">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.environmentalRisk">Environmental Risk</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cardiovascularDisease">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cardiovascularDisease">Cardiovascular Disease</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hypertension">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.hypertension">Hypertension</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="diabetes">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.diabetes">Diabetes</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="stomachDisease">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.stomachDisease">Stomach Disease</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="chronicLungDisease">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.chronicLungDisease">Chronic Lung Disease</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="asthma">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.asthma">Asthma</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="goiter">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.goiter">Goiter</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="hepatitis">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.hepatitis">Hepatitis</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="congenitalHeartDisease">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.congenitalHeartDisease">Congenital Heart Disease</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mentalDisorders">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.mentalDisorders">Mental Disorders</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="autism">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.autism">Autism</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="epilepsy">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.epilepsy">Epilepsy</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cancer">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cancer">Cancer</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tuberculosis">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.tuberculosis">Tuberculosis</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="otherDiseases">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherDiseases">Other Diseases</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contraceptiveMethod">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.contraceptiveMethod">Contraceptive Method</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastPregnancy">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.lastPregnancy">Last Pregnancy</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfPregnancies">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPregnancies">Number Of Pregnancies</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfMiscarriages">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfMiscarriages">Number Of Miscarriages</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfAbortions">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfAbortions">Number Of Abortions</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfBirths">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfBirths">Number Of Births</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vaginalDelivery">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.vaginalDelivery">Vaginal Delivery</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cesareanSection">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cesareanSection">Cesarean Section</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="difficultDelivery">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.difficultDelivery">Difficult Delivery</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfFullTermBirths">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfFullTermBirths">Number Of Full Term Births</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfPrematureBirths">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPrematureBirths">Number Of Premature Births</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numberOfChildrenAlive">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfChildrenAlive">Number Of Children Alive</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gynecologicalDiseases">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.gynecologicalDiseases">Gynecological Diseases</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthStatus">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthStatus">Birth Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthWeight">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthWeight">Birth Weight</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthHeight">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthHeight">Birth Height</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthDefectNote">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthDefectNote">Birth Defect Note</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="otherBirthNote">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherBirthNote">Other Birth Note</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="otherHealthNote">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherHealthNote">Other Health Note</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (additionalInformation of additionalInformations(); track trackId(additionalInformation)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/additional-information', additionalInformation.id, 'view']">{{ additionalInformation.id }}</a>
+              </td>
+              <td [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformation.smoking ?? 'null')">
+                {{ { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[additionalInformation.smoking ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'gatewayApp.RiskLevelAlcohol.' + (additionalInformation.alcoholRiskLevel ?? 'null')">
+                {{ { null: '', YES: 'YES', NO: 'NO', DROPPED: 'DROPPED' }[additionalInformation.alcoholRiskLevel ?? 'null'] }}
+              </td>
+              <td>{{ additionalInformation.alcoholGlassesPerDay }}</td>
+              <td [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformation.drugUse ?? 'null')">
+                {{ { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[additionalInformation.drugUse ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformation.physicalActivity ?? 'null')">
+                {{
+                  { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[
+                    additionalInformation.physicalActivity ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ additionalInformation.exposureFactor }}</td>
+              <td>{{ additionalInformation.exposureDate | formatMediumDate }}</td>
+              <td [jhiTranslate]="'gatewayApp.TypeToilet.' + (additionalInformation.typeToilet ?? 'null')">
+                {{
+                  { null: '', FLUSH: 'FLUSH', DOUBLE: 'DOUBLE', BARREL: 'BARREL', NONE: 'NONE' }[additionalInformation.typeToilet ?? 'null']
+                }}
+              </td>
+              <td>{{ additionalInformation.environmentalRisk }}</td>
+              <td>{{ additionalInformation.cardiovascularDisease }}</td>
+              <td>{{ additionalInformation.hypertension }}</td>
+              <td>{{ additionalInformation.diabetes }}</td>
+              <td>{{ additionalInformation.stomachDisease }}</td>
+              <td>{{ additionalInformation.chronicLungDisease }}</td>
+              <td>{{ additionalInformation.asthma }}</td>
+              <td>{{ additionalInformation.goiter }}</td>
+              <td>{{ additionalInformation.hepatitis }}</td>
+              <td>{{ additionalInformation.congenitalHeartDisease }}</td>
+              <td>{{ additionalInformation.mentalDisorders }}</td>
+              <td>{{ additionalInformation.autism }}</td>
+              <td>{{ additionalInformation.epilepsy }}</td>
+              <td>{{ additionalInformation.cancer }}</td>
+              <td>{{ additionalInformation.tuberculosis }}</td>
+              <td>{{ additionalInformation.otherDiseases }}</td>
+              <td>{{ additionalInformation.contraceptiveMethod }}</td>
+              <td>{{ additionalInformation.lastPregnancy }}</td>
+              <td>{{ additionalInformation.numberOfPregnancies }}</td>
+              <td>{{ additionalInformation.numberOfMiscarriages }}</td>
+              <td>{{ additionalInformation.numberOfAbortions }}</td>
+              <td>{{ additionalInformation.numberOfBirths }}</td>
+              <td>{{ additionalInformation.vaginalDelivery }}</td>
+              <td>{{ additionalInformation.cesareanSection }}</td>
+              <td>{{ additionalInformation.difficultDelivery }}</td>
+              <td>{{ additionalInformation.numberOfFullTermBirths }}</td>
+              <td>{{ additionalInformation.numberOfPrematureBirths }}</td>
+              <td>{{ additionalInformation.numberOfChildrenAlive }}</td>
+              <td>{{ additionalInformation.gynecologicalDiseases }}</td>
+              <td [jhiTranslate]="'gatewayApp.BirthStatusType.' + (additionalInformation.birthStatus ?? 'null')">
+                {{
+                  { null: '', NORMAL: 'NORMAL', CSECTION: 'CSECTION', EARLY: 'EARLY', SUFFOCATE: 'SUFFOCATE' }[
+                    additionalInformation.birthStatus ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>{{ additionalInformation.birthWeight }}</td>
+              <td>{{ additionalInformation.birthHeight }}</td>
+              <td>{{ additionalInformation.birthDefectNote }}</td>
+              <td>{{ additionalInformation.otherBirthNote }}</td>
+              <td>{{ additionalInformation.otherHealthNote }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/additional-information', additionalInformation.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/additional-information', additionalInformation.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(additionalInformation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (additionalInformations().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,69 @@
+{
+  "gatewayApp": {
+    "microservicePatient": {
+      "home": {
+        "title": "Patients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Patient",
+        "createOrEditLabel": "Create or edit a Patient",
+        "notFound": "No Patients found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Patient {{ id }}?"
+      },
+      "detail": {
+        "title": "Patient"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "gender": "Gender",
+      "dateOfBirth": "Date Of Birth",
+      "placeOfBirth": "Place Of Birth",
+      "bloodTypeAbo": "Blood Type Abo",
+      "bloodTypeRh": "Blood Type Rh",
+      "ethnic": "Ethnic",
+      "nationality": "Nationality",
+      "religion": "Religion",
+      "job": "Job",
+      "idNumber": "Id Number",
+      "idIssueDate": "Id Issue Date",
+      "idIssuePlace": "Id Issue Place",
+      "healthInsuranceNumber": "Health Insurance Number",
+      "permanentAddress": "Permanent Address",
+      "permanentWard": "Permanent Ward",
+      "permanentDistrict": "Permanent District",
+      "permanentProvince": "Permanent Province",
+      "currentAddress": "Current Address",
+      "currentWard": "Current Ward",
+      "currentDistrict": "Current District",
+      "currentProvince": "Current Province",
+      "landlinePhone": "Landline Phone",
+      "mobilePhone": "Mobile Phone",
+      "email": "Email",
+      "motherName": "Mother Name",
+      "fatherName": "Father Name",
+      "caregiverName": "Caregiver Name",
+      "caregiverRelation": "Caregiver Relation",
+      "caregiverLandlinePhone": "Caregiver Landline Phone",
+      "caregiverMobilePhone": "Caregiver Mobile Phone",
+      "familyCode": "Family Code",
+      "additionalInfo": "Additional Info",
+      "vaccinationsForBaby": "Vaccinations For Baby",
+      "allergies": "Allergies",
+      "disabilities": "Disabilities",
+      "surgeryHistories": "Surgery Histories",
+      "familyAllergies": "Family Allergies",
+      "familyDiseases": "Family Diseases",
+      "vaccinationsTCMR": "Vaccinations TCMR",
+      "pregnancyTetanus": "Pregnancy Tetanus",
+      "medicalRecords": "Medical Records"
+    }
+  },
+  "microserviceApp": {
+    "microservicePatient": {
+      "created": "A new Patient is created with identifier {{ param }}",
+      "updated": "A Patient is updated with identifier {{ param }}",
+      "deleted": "A Patient is deleted with identifier {{ param }}"
+    }
+  }
+}

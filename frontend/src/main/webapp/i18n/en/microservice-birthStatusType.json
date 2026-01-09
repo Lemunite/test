@@ -1,0 +1,11 @@
+{
+  "gatewayApp": {
+    "BirthStatusType": {
+      "null": "",
+      "NORMAL": "NORMAL",
+      "CSECTION": "CSECTION",
+      "EARLY": "EARLY",
+      "SUFFOCATE": "SUFFOCATE"
+    }
+  }
+}

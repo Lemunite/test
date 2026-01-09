@@ -1,0 +1,638 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-additional-information-heading"
+        data-cy="AdditionalInformationCreateUpdateHeading"
+        jhiTranslate="gatewayApp.microserviceAdditionalInformation.home.createOrEditLabel"
+      >
+        Create or edit a Additional Information
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="gatewayApp.microserviceAdditionalInformation.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_smoking" jhiTranslate="gatewayApp.microserviceAdditionalInformation.smoking">Smoking</label>
+          <select class="form-control" name="smoking" formControlName="smoking" id="field_smoking" data-cy="smoking">
+            <option [ngValue]="null">{{ 'gatewayApp.RiskLevel.null' | translate }}</option>
+            @for (riskLevel of riskLevelValues; track $index) {
+              <option [value]="riskLevel">{{ 'gatewayApp.RiskLevel.' + riskLevel | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_alcoholRiskLevel"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholRiskLevel"
+            >Alcohol Risk Level</label
+          >
+          <select
+            class="form-control"
+            name="alcoholRiskLevel"
+            formControlName="alcoholRiskLevel"
+            id="field_alcoholRiskLevel"
+            data-cy="alcoholRiskLevel"
+          >
+            <option [ngValue]="null">{{ 'gatewayApp.RiskLevelAlcohol.null' | translate }}</option>
+            @for (riskLevelAlcohol of riskLevelAlcoholValues; track $index) {
+              <option [value]="riskLevelAlcohol">{{ 'gatewayApp.RiskLevelAlcohol.' + riskLevelAlcohol | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_alcoholGlassesPerDay"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholGlassesPerDay"
+            >Alcohol Glasses Per Day</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="alcoholGlassesPerDay"
+            id="field_alcoholGlassesPerDay"
+            data-cy="alcoholGlassesPerDay"
+            formControlName="alcoholGlassesPerDay"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_drugUse" jhiTranslate="gatewayApp.microserviceAdditionalInformation.drugUse">Drug Use</label>
+          <select class="form-control" name="drugUse" formControlName="drugUse" id="field_drugUse" data-cy="drugUse">
+            <option [ngValue]="null">{{ 'gatewayApp.RiskLevel.null' | translate }}</option>
+            @for (riskLevel of riskLevelValues; track $index) {
+              <option [value]="riskLevel">{{ 'gatewayApp.RiskLevel.' + riskLevel | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_physicalActivity"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.physicalActivity"
+            >Physical Activity</label
+          >
+          <select
+            class="form-control"
+            name="physicalActivity"
+            formControlName="physicalActivity"
+            id="field_physicalActivity"
+            data-cy="physicalActivity"
+          >
+            <option [ngValue]="null">{{ 'gatewayApp.RiskLevel.null' | translate }}</option>
+            @for (riskLevel of riskLevelValues; track $index) {
+              <option [value]="riskLevel">{{ 'gatewayApp.RiskLevel.' + riskLevel | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_exposureFactor" jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureFactor"
+            >Exposure Factor</label
+          >
+          <textarea
+            class="form-control"
+            name="exposureFactor"
+            id="field_exposureFactor"
+            data-cy="exposureFactor"
+            formControlName="exposureFactor"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_exposureDate" jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureDate"
+            >Exposure Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_exposureDate"
+              data-cy="exposureDate"
+              type="text"
+              class="form-control"
+              name="exposureDate"
+              ngbDatepicker
+              #exposureDateDp="ngbDatepicker"
+              formControlName="exposureDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="exposureDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_typeToilet" jhiTranslate="gatewayApp.microserviceAdditionalInformation.typeToilet"
+            >Type Toilet</label
+          >
+          <select class="form-control" name="typeToilet" formControlName="typeToilet" id="field_typeToilet" data-cy="typeToilet">
+            <option [ngValue]="null">{{ 'gatewayApp.TypeToilet.null' | translate }}</option>
+            @for (typeToilet of typeToiletValues; track $index) {
+              <option [value]="typeToilet">{{ 'gatewayApp.TypeToilet.' + typeToilet | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_environmentalRisk"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.environmentalRisk"
+            >Environmental Risk</label
+          >
+          <textarea
+            class="form-control"
+            name="environmentalRisk"
+            id="field_environmentalRisk"
+            data-cy="environmentalRisk"
+            formControlName="environmentalRisk"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_cardiovascularDisease"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.cardiovascularDisease"
+            >Cardiovascular Disease</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="cardiovascularDisease"
+            id="field_cardiovascularDisease"
+            data-cy="cardiovascularDisease"
+            formControlName="cardiovascularDisease"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hypertension" jhiTranslate="gatewayApp.microserviceAdditionalInformation.hypertension"
+            >Hypertension</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hypertension"
+            id="field_hypertension"
+            data-cy="hypertension"
+            formControlName="hypertension"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_diabetes" jhiTranslate="gatewayApp.microserviceAdditionalInformation.diabetes"
+            >Diabetes</label
+          >
+          <input type="checkbox" class="form-check" name="diabetes" id="field_diabetes" data-cy="diabetes" formControlName="diabetes" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_stomachDisease" jhiTranslate="gatewayApp.microserviceAdditionalInformation.stomachDisease"
+            >Stomach Disease</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="stomachDisease"
+            id="field_stomachDisease"
+            data-cy="stomachDisease"
+            formControlName="stomachDisease"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_chronicLungDisease"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.chronicLungDisease"
+            >Chronic Lung Disease</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="chronicLungDisease"
+            id="field_chronicLungDisease"
+            data-cy="chronicLungDisease"
+            formControlName="chronicLungDisease"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_asthma" jhiTranslate="gatewayApp.microserviceAdditionalInformation.asthma">Asthma</label>
+          <input type="checkbox" class="form-check" name="asthma" id="field_asthma" data-cy="asthma" formControlName="asthma" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_goiter" jhiTranslate="gatewayApp.microserviceAdditionalInformation.goiter">Goiter</label>
+          <input type="checkbox" class="form-check" name="goiter" id="field_goiter" data-cy="goiter" formControlName="goiter" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_hepatitis" jhiTranslate="gatewayApp.microserviceAdditionalInformation.hepatitis"
+            >Hepatitis</label
+          >
+          <input type="checkbox" class="form-check" name="hepatitis" id="field_hepatitis" data-cy="hepatitis" formControlName="hepatitis" />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_congenitalHeartDisease"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.congenitalHeartDisease"
+            >Congenital Heart Disease</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="congenitalHeartDisease"
+            id="field_congenitalHeartDisease"
+            data-cy="congenitalHeartDisease"
+            formControlName="congenitalHeartDisease"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_mentalDisorders" jhiTranslate="gatewayApp.microserviceAdditionalInformation.mentalDisorders"
+            >Mental Disorders</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="mentalDisorders"
+            id="field_mentalDisorders"
+            data-cy="mentalDisorders"
+            formControlName="mentalDisorders"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_autism" jhiTranslate="gatewayApp.microserviceAdditionalInformation.autism">Autism</label>
+          <input type="checkbox" class="form-check" name="autism" id="field_autism" data-cy="autism" formControlName="autism" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_epilepsy" jhiTranslate="gatewayApp.microserviceAdditionalInformation.epilepsy"
+            >Epilepsy</label
+          >
+          <input type="checkbox" class="form-check" name="epilepsy" id="field_epilepsy" data-cy="epilepsy" formControlName="epilepsy" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cancer" jhiTranslate="gatewayApp.microserviceAdditionalInformation.cancer">Cancer</label>
+          <input type="text" class="form-control" name="cancer" id="field_cancer" data-cy="cancer" formControlName="cancer" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tuberculosis" jhiTranslate="gatewayApp.microserviceAdditionalInformation.tuberculosis"
+            >Tuberculosis</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="tuberculosis"
+            id="field_tuberculosis"
+            data-cy="tuberculosis"
+            formControlName="tuberculosis"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_otherDiseases" jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherDiseases"
+            >Other Diseases</label
+          >
+          <textarea
+            class="form-control"
+            name="otherDiseases"
+            id="field_otherDiseases"
+            data-cy="otherDiseases"
+            formControlName="otherDiseases"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_contraceptiveMethod"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.contraceptiveMethod"
+            >Contraceptive Method</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contraceptiveMethod"
+            id="field_contraceptiveMethod"
+            data-cy="contraceptiveMethod"
+            formControlName="contraceptiveMethod"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_lastPregnancy" jhiTranslate="gatewayApp.microserviceAdditionalInformation.lastPregnancy"
+            >Last Pregnancy</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lastPregnancy"
+            id="field_lastPregnancy"
+            data-cy="lastPregnancy"
+            formControlName="lastPregnancy"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfPregnancies"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPregnancies"
+            >Number Of Pregnancies</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfPregnancies"
+            id="field_numberOfPregnancies"
+            data-cy="numberOfPregnancies"
+            formControlName="numberOfPregnancies"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfMiscarriages"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfMiscarriages"
+            >Number Of Miscarriages</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfMiscarriages"
+            id="field_numberOfMiscarriages"
+            data-cy="numberOfMiscarriages"
+            formControlName="numberOfMiscarriages"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfAbortions"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfAbortions"
+            >Number Of Abortions</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfAbortions"
+            id="field_numberOfAbortions"
+            data-cy="numberOfAbortions"
+            formControlName="numberOfAbortions"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numberOfBirths" jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfBirths"
+            >Number Of Births</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfBirths"
+            id="field_numberOfBirths"
+            data-cy="numberOfBirths"
+            formControlName="numberOfBirths"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vaginalDelivery" jhiTranslate="gatewayApp.microserviceAdditionalInformation.vaginalDelivery"
+            >Vaginal Delivery</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vaginalDelivery"
+            id="field_vaginalDelivery"
+            data-cy="vaginalDelivery"
+            formControlName="vaginalDelivery"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cesareanSection" jhiTranslate="gatewayApp.microserviceAdditionalInformation.cesareanSection"
+            >Cesarean Section</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="cesareanSection"
+            id="field_cesareanSection"
+            data-cy="cesareanSection"
+            formControlName="cesareanSection"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_difficultDelivery"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.difficultDelivery"
+            >Difficult Delivery</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="difficultDelivery"
+            id="field_difficultDelivery"
+            data-cy="difficultDelivery"
+            formControlName="difficultDelivery"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfFullTermBirths"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfFullTermBirths"
+            >Number Of Full Term Births</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfFullTermBirths"
+            id="field_numberOfFullTermBirths"
+            data-cy="numberOfFullTermBirths"
+            formControlName="numberOfFullTermBirths"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfPrematureBirths"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPrematureBirths"
+            >Number Of Premature Births</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfPrematureBirths"
+            id="field_numberOfPrematureBirths"
+            data-cy="numberOfPrematureBirths"
+            formControlName="numberOfPrematureBirths"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_numberOfChildrenAlive"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfChildrenAlive"
+            >Number Of Children Alive</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfChildrenAlive"
+            id="field_numberOfChildrenAlive"
+            data-cy="numberOfChildrenAlive"
+            formControlName="numberOfChildrenAlive"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_gynecologicalDiseases"
+            jhiTranslate="gatewayApp.microserviceAdditionalInformation.gynecologicalDiseases"
+            >Gynecological Diseases</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="gynecologicalDiseases"
+            id="field_gynecologicalDiseases"
+            data-cy="gynecologicalDiseases"
+            formControlName="gynecologicalDiseases"
+          />
+        </div>
+
+        @let birthStatusRef = editForm.get('birthStatus')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_birthStatus" jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthStatus"
+            >Birth Status</label
+          >
+          <select class="form-control" name="birthStatus" formControlName="birthStatus" id="field_birthStatus" data-cy="birthStatus">
+            <option [ngValue]="null">{{ 'gatewayApp.BirthStatusType.null' | translate }}</option>
+            @for (birthStatusType of birthStatusTypeValues; track $index) {
+              <option [value]="birthStatusType">{{ 'gatewayApp.BirthStatusType.' + birthStatusType | translate }}</option>
+            }
+          </select>
+          @if (birthStatusRef.invalid && (birthStatusRef.dirty || birthStatusRef.touched)) {
+            <div>
+              @if (editForm.get('birthStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_birthWeight" jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthWeight"
+            >Birth Weight</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="birthWeight"
+            id="field_birthWeight"
+            data-cy="birthWeight"
+            formControlName="birthWeight"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_birthHeight" jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthHeight"
+            >Birth Height</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="birthHeight"
+            id="field_birthHeight"
+            data-cy="birthHeight"
+            formControlName="birthHeight"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_birthDefectNote" jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthDefectNote"
+            >Birth Defect Note</label
+          >
+          <textarea
+            class="form-control"
+            name="birthDefectNote"
+            id="field_birthDefectNote"
+            data-cy="birthDefectNote"
+            formControlName="birthDefectNote"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_otherBirthNote" jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherBirthNote"
+            >Other Birth Note</label
+          >
+          <textarea
+            class="form-control"
+            name="otherBirthNote"
+            id="field_otherBirthNote"
+            data-cy="otherBirthNote"
+            formControlName="otherBirthNote"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_otherHealthNote" jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherHealthNote"
+            >Other Health Note</label
+          >
+          <textarea
+            class="form-control"
+            name="otherHealthNote"
+            id="field_otherHealthNote"
+            data-cy="otherHealthNote"
+            formControlName="otherHealthNote"
+          ></textarea>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

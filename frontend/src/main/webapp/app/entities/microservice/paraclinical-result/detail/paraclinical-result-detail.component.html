@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (paraclinicalResult(); as paraclinicalResultRef) {
+      <div>
+        <h2 data-cy="paraclinicalResultDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceParaclinicalResult.detail.title">Paraclinical Result</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ paraclinicalResultRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceParaclinicalResult.testName">Test Name</span></dt>
+          <dd>
+            <span>{{ paraclinicalResultRef.testName }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceParaclinicalResult.result">Result</span></dt>
+          <dd>
+            <span>{{ paraclinicalResultRef.result }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceParaclinicalResult.resultDate">Result Date</span></dt>
+          <dd>
+            <span>{{ paraclinicalResultRef.resultDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceParaclinicalResult.medicalRecord">Medical Record</span></dt>
+          <dd>
+            @if (paraclinicalResult()!.medicalRecord) {
+              <div>
+                <a [routerLink]="['/medical-record', paraclinicalResult()!.medicalRecord?.id, 'view']">{{
+                  paraclinicalResultRef.medicalRecord?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/paraclinical-result', paraclinicalResultRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

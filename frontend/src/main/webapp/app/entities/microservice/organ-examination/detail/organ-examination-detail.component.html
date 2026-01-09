@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organExamination(); as organExaminationRef) {
+      <div>
+        <h2 data-cy="organExaminationDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceOrganExamination.detail.title">Organ Examination</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.cardiovascular">Cardiovascular</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.cardiovascular }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.respiratory">Respiratory</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.respiratory }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.digestive">Digestive</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.digestive }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.urinary">Urinary</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.urinary }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.musculoskeletal">Musculoskeletal</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.musculoskeletal }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.endocrine">Endocrine</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.endocrine }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.neurological">Neurological</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.neurological }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.psychiatric">Psychiatric</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.psychiatric }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.surgery">Surgery</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.surgery }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.obstetricsAndGynecology">Obstetrics And Gynecology</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.obstetricsAndGynecology }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.otolaryngology">Otolaryngology</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.otolaryngology }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.microserviceOrganExamination.dentistryAndMaxillofacialSurgery"
+              >Dentistry And Maxillofacial Surgery</span
+            >
+          </dt>
+          <dd>
+            <span>{{ organExaminationRef.dentistryAndMaxillofacialSurgery }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.eye">Eye</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.eye }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.dermatology">Dermatology</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.dermatology }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.nutrition">Nutrition</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.nutrition }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.exercise">Exercise</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.exercise }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.other">Other</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.other }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceOrganExamination.developmentAssessment">Development Assessment</span></dt>
+          <dd>
+            <span>{{ organExaminationRef.developmentAssessment }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organ-examination', organExaminationRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

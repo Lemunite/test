@@ -1,0 +1,130 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (medicalRecord(); as medicalRecordRef) {
+      <div>
+        <h2 data-cy="medicalRecordDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceMedicalRecord.detail.title">Medical Record</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.examinationDate">Examination Date</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.examinationDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.medicalHistory">Medical History</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.medicalHistory }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeNoGlass">Left Eye No Glass</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.leftEyeNoGlass }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeNoGlass">Right Eye No Glass</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.rightEyeNoGlass }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.leftEyeWithGlass">Left Eye With Glass</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.leftEyeWithGlass }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.rightEyeWithGlass">Right Eye With Glass</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.rightEyeWithGlass }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.pulse">Pulse</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.pulse }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.temperature">Temperature</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.temperature }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.bloodPressure">Blood Pressure</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.bloodPressure }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.respiratoryRate">Respiratory Rate</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.respiratoryRate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.weight">Weight</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.weight }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.height">Height</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.height }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.bmi">Bmi</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.bmi }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.waist">Waist</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.waist }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.skinMucosa">Skin Mucosa</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.skinMucosa }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.other">Other</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.other }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseName">Disease Name</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.diseaseName }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.diseaseCode">Disease Code</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.diseaseCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.advice">Advice</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.advice }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.docterName">Docter Name</span></dt>
+          <dd>
+            <span>{{ medicalRecordRef.docterName }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.organExamination">Organ Examination</span></dt>
+          <dd>
+            @if (medicalRecord()!.organExamination) {
+              <div>
+                <a [routerLink]="['/organ-examination', medicalRecord()!.organExamination?.id, 'view']">{{
+                  medicalRecordRef.organExamination?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceMedicalRecord.patient">Patient</span></dt>
+          <dd>
+            @if (medicalRecord()!.patient) {
+              <div>
+                <a [routerLink]="['/patient', medicalRecord()!.patient?.id, 'view']">{{ medicalRecordRef.patient?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/medical-record', medicalRecordRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

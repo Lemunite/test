@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "microserviceAllergy": {
+      "home": {
+        "title": "Allergies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Allergy",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Allergy",
+        "notFound": "No Allergies found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Allergy {{ id }}?"
+      },
+      "detail": {
+        "title": "Allergy"
+      },
+      "id": "ID",
+      "type": "Type",
+      "description": "Description",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceAllergy": {
+      "created": "Một Allergy mới được tạo với định danh {{ param }}",
+      "updated": "Một Allergy cập nhật với định danh {{ param }}",
+      "deleted": "Một Allergy đã xóa với định danh {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,381 @@
+<div>
+  <h2 id="page-heading" data-cy="PatientHeading">
+    <span jhiTranslate="gatewayApp.microservicePatient.home.title">Patients</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="gatewayApp.microservicePatient.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-patient"
+        [routerLink]="['/patient/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.microservicePatient.home.createLabel">Create a new Patient</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (patients().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="gatewayApp.microservicePatient.home.notFound">No Patients found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fullName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.fullName">Full Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gender">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.gender">Gender</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateOfBirth">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.dateOfBirth">Date Of Birth</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="placeOfBirth">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.placeOfBirth">Place Of Birth</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bloodTypeAbo">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.bloodTypeAbo">Blood Type Abo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bloodTypeRh">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.bloodTypeRh">Blood Type Rh</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ethnic">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.ethnic">Ethnic</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nationality">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.nationality">Nationality</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="religion">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.religion">Religion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="job">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.job">Job</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idNumber">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.idNumber">Id Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idIssueDate">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.idIssueDate">Id Issue Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idIssuePlace">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.idIssuePlace">Id Issue Place</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="healthInsuranceNumber">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.healthInsuranceNumber">Health Insurance Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="permanentAddress">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.permanentAddress">Permanent Address</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="permanentWard">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.permanentWard">Permanent Ward</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="permanentDistrict">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.permanentDistrict">Permanent District</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="permanentProvince">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.permanentProvince">Permanent Province</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currentAddress">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.currentAddress">Current Address</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currentWard">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.currentWard">Current Ward</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currentDistrict">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.currentDistrict">Current District</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="currentProvince">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.currentProvince">Current Province</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="landlinePhone">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.landlinePhone">Landline Phone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mobilePhone">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.mobilePhone">Mobile Phone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="motherName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.motherName">Mother Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fatherName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.fatherName">Father Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="caregiverName">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.caregiverName">Caregiver Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="caregiverRelation">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.caregiverRelation">Caregiver Relation</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="caregiverLandlinePhone">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.caregiverLandlinePhone">Caregiver Landline Phone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="caregiverMobilePhone">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.caregiverMobilePhone">Caregiver Mobile Phone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="familyCode">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.familyCode">Family Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="additionalInfo.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.additionalInfo">Additional Info</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vaccinationsForBaby.id">
+              <div class="d-flex">
+                <span jhiTranslate="gatewayApp.microservicePatient.vaccinationsForBaby">Vaccinations For Baby</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (patient of patients(); track trackId(patient)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/patient', patient.id, 'view']">{{ patient.id }}</a>
+              </td>
+              <td>{{ patient.fullName }}</td>
+              <td [jhiTranslate]="'gatewayApp.Gender.' + (patient.gender ?? 'null')">
+                {{ { null: '', MALE: 'MALE', FEMALE: 'FEMALE', OTHERS: 'OTHERS' }[patient.gender ?? 'null'] }}
+              </td>
+              <td>{{ patient.dateOfBirth | formatMediumDate }}</td>
+              <td>{{ patient.placeOfBirth }}</td>
+              <td>{{ patient.bloodTypeAbo }}</td>
+              <td>{{ patient.bloodTypeRh }}</td>
+              <td>{{ patient.ethnic }}</td>
+              <td>{{ patient.nationality }}</td>
+              <td>{{ patient.religion }}</td>
+              <td>{{ patient.job }}</td>
+              <td>{{ patient.idNumber }}</td>
+              <td>{{ patient.idIssueDate | formatMediumDate }}</td>
+              <td>{{ patient.idIssuePlace }}</td>
+              <td>{{ patient.healthInsuranceNumber }}</td>
+              <td>{{ patient.permanentAddress }}</td>
+              <td>{{ patient.permanentWard }}</td>
+              <td>{{ patient.permanentDistrict }}</td>
+              <td>{{ patient.permanentProvince }}</td>
+              <td>{{ patient.currentAddress }}</td>
+              <td>{{ patient.currentWard }}</td>
+              <td>{{ patient.currentDistrict }}</td>
+              <td>{{ patient.currentProvince }}</td>
+              <td>{{ patient.landlinePhone }}</td>
+              <td>{{ patient.mobilePhone }}</td>
+              <td>{{ patient.email }}</td>
+              <td>{{ patient.motherName }}</td>
+              <td>{{ patient.fatherName }}</td>
+              <td>{{ patient.caregiverName }}</td>
+              <td>{{ patient.caregiverRelation }}</td>
+              <td>{{ patient.caregiverLandlinePhone }}</td>
+              <td>{{ patient.caregiverMobilePhone }}</td>
+              <td>{{ patient.familyCode }}</td>
+              <td>
+                @if (patient.additionalInfo) {
+                  <div>
+                    <a [routerLink]="['/additional-information', patient.additionalInfo.id, 'view']">{{ patient.additionalInfo.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (patient.vaccinationsForBaby) {
+                  <div>
+                    <a [routerLink]="['/vaccination-for-baby', patient.vaccinationsForBaby.id, 'view']">{{
+                      patient.vaccinationsForBaby.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/patient', patient.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/patient', patient.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(patient)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (patients().length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page, totalItems, itemsPerPage }" />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

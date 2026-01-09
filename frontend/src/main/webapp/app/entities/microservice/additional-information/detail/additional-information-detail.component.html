@@ -1,0 +1,224 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (additionalInformation(); as additionalInformationRef) {
+      <div>
+        <h2 data-cy="additionalInformationDetailsHeading">
+          <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.detail.title">Additional Information</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.smoking">Smoking</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformationRef.smoking ?? 'null')">{{
+              { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[additionalInformationRef.smoking ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholRiskLevel">Alcohol Risk Level</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.RiskLevelAlcohol.' + (additionalInformationRef.alcoholRiskLevel ?? 'null')">{{
+              { null: '', YES: 'YES', NO: 'NO', DROPPED: 'DROPPED' }[additionalInformationRef.alcoholRiskLevel ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.alcoholGlassesPerDay">Alcohol Glasses Per Day</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.alcoholGlassesPerDay }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.drugUse">Drug Use</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformationRef.drugUse ?? 'null')">{{
+              { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[additionalInformationRef.drugUse ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.physicalActivity">Physical Activity</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.RiskLevel.' + (additionalInformationRef.physicalActivity ?? 'null')">{{
+              { null: '', YES: 'YES', NO: 'NO', FREQUENT: 'FREQUENT', STOPPED: 'STOPPED' }[
+                additionalInformationRef.physicalActivity ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureFactor">Exposure Factor</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.exposureFactor }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.exposureDate">Exposure Date</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.exposureDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.typeToilet">Type Toilet</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.TypeToilet.' + (additionalInformationRef.typeToilet ?? 'null')">{{
+              { null: '', FLUSH: 'FLUSH', DOUBLE: 'DOUBLE', BARREL: 'BARREL', NONE: 'NONE' }[additionalInformationRef.typeToilet ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.environmentalRisk">Environmental Risk</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.environmentalRisk }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cardiovascularDisease">Cardiovascular Disease</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.cardiovascularDisease }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.hypertension">Hypertension</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.hypertension }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.diabetes">Diabetes</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.diabetes }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.stomachDisease">Stomach Disease</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.stomachDisease }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.chronicLungDisease">Chronic Lung Disease</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.chronicLungDisease }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.asthma">Asthma</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.asthma }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.goiter">Goiter</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.goiter }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.hepatitis">Hepatitis</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.hepatitis }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.congenitalHeartDisease">Congenital Heart Disease</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.congenitalHeartDisease }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.mentalDisorders">Mental Disorders</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.mentalDisorders }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.autism">Autism</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.autism }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.epilepsy">Epilepsy</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.epilepsy }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cancer">Cancer</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.cancer }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.tuberculosis">Tuberculosis</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.tuberculosis }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherDiseases">Other Diseases</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.otherDiseases }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.contraceptiveMethod">Contraceptive Method</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.contraceptiveMethod }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.lastPregnancy">Last Pregnancy</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.lastPregnancy }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPregnancies">Number Of Pregnancies</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfPregnancies }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfMiscarriages">Number Of Miscarriages</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfMiscarriages }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfAbortions">Number Of Abortions</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfAbortions }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfBirths">Number Of Births</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfBirths }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.vaginalDelivery">Vaginal Delivery</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.vaginalDelivery }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.cesareanSection">Cesarean Section</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.cesareanSection }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.difficultDelivery">Difficult Delivery</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.difficultDelivery }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfFullTermBirths">Number Of Full Term Births</span>
+          </dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfFullTermBirths }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfPrematureBirths">Number Of Premature Births</span>
+          </dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfPrematureBirths }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.numberOfChildrenAlive">Number Of Children Alive</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.numberOfChildrenAlive }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.gynecologicalDiseases">Gynecological Diseases</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.gynecologicalDiseases }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthStatus">Birth Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'gatewayApp.BirthStatusType.' + (additionalInformationRef.birthStatus ?? 'null')">{{
+              { null: '', NORMAL: 'NORMAL', CSECTION: 'CSECTION', EARLY: 'EARLY', SUFFOCATE: 'SUFFOCATE' }[
+                additionalInformationRef.birthStatus ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthWeight">Birth Weight</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.birthWeight }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthHeight">Birth Height</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.birthHeight }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.birthDefectNote">Birth Defect Note</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.birthDefectNote }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherBirthNote">Other Birth Note</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.otherBirthNote }}</span>
+          </dd>
+          <dt><span jhiTranslate="gatewayApp.microserviceAdditionalInformation.otherHealthNote">Other Health Note</span></dt>
+          <dd>
+            <span>{{ additionalInformationRef.otherHealthNote }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/additional-information', additionalInformationRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

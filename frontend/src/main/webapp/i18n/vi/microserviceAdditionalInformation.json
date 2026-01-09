@@ -1,0 +1,71 @@
+{
+  "gatewayApp": {
+    "microserviceAdditionalInformation": {
+      "home": {
+        "title": "Additional Informations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Additional Information",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Additional Information",
+        "notFound": "No Additional Informations found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Additional Information {{ id }}?"
+      },
+      "detail": {
+        "title": "Additional Information"
+      },
+      "id": "ID",
+      "smoking": "Smoking",
+      "alcoholRiskLevel": "Alcohol Risk Level",
+      "alcoholGlassesPerDay": "Alcohol Glasses Per Day",
+      "drugUse": "Drug Use",
+      "physicalActivity": "Physical Activity",
+      "exposureFactor": "Exposure Factor",
+      "exposureDate": "Exposure Date",
+      "typeToilet": "Type Toilet",
+      "environmentalRisk": "Environmental Risk",
+      "cardiovascularDisease": "Cardiovascular Disease",
+      "hypertension": "Hypertension",
+      "diabetes": "Diabetes",
+      "stomachDisease": "Stomach Disease",
+      "chronicLungDisease": "Chronic Lung Disease",
+      "asthma": "Asthma",
+      "goiter": "Goiter",
+      "hepatitis": "Hepatitis",
+      "congenitalHeartDisease": "Congenital Heart Disease",
+      "mentalDisorders": "Mental Disorders",
+      "autism": "Autism",
+      "epilepsy": "Epilepsy",
+      "cancer": "Cancer",
+      "tuberculosis": "Tuberculosis",
+      "otherDiseases": "Other Diseases",
+      "contraceptiveMethod": "Contraceptive Method",
+      "lastPregnancy": "Last Pregnancy",
+      "numberOfPregnancies": "Number Of Pregnancies",
+      "numberOfMiscarriages": "Number Of Miscarriages",
+      "numberOfAbortions": "Number Of Abortions",
+      "numberOfBirths": "Number Of Births",
+      "vaginalDelivery": "Vaginal Delivery",
+      "cesareanSection": "Cesarean Section",
+      "difficultDelivery": "Difficult Delivery",
+      "numberOfFullTermBirths": "Number Of Full Term Births",
+      "numberOfPrematureBirths": "Number Of Premature Births",
+      "numberOfChildrenAlive": "Number Of Children Alive",
+      "gynecologicalDiseases": "Gynecological Diseases",
+      "birthStatus": "Birth Status",
+      "birthWeight": "Birth Weight",
+      "birthHeight": "Birth Height",
+      "birthDefectNote": "Birth Defect Note",
+      "otherBirthNote": "Other Birth Note",
+      "otherHealthNote": "Other Health Note",
+      "patient": "Patient"
+    }
+  },
+  "microserviceApp": {
+    "microserviceAdditionalInformation": {
+      "created": "Một Additional Information mới được tạo với định danh {{ param }}",
+      "updated": "Một Additional Information cập nhật với định danh {{ param }}",
+      "deleted": "Một Additional Information đã xóa với định danh {{ param }}"
+    }
+  }
+}
