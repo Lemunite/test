@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025837"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "bodyPart",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "surgeryYear",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "SurgeryHistory",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "surgeryHistories",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

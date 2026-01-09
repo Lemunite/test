@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025847"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "testName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "result",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "resultDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "ParaclinicalResult",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "medicalRecord",
+      "otherEntityRelationshipName": "paraclinicalResults",
+      "relationshipName": "medicalRecord",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

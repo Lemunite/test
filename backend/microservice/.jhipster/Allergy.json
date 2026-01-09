@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025728"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "AllergyType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DRUGS,CHEMICALS,FOOD,OTHER"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "Allergy",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "allergies",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

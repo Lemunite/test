@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025736"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "vaccination_tcmr",
+  "fields": [
+    {
+      "fieldName": "vaccine",
+      "fieldType": "VaccineTCMRType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TA_1,TA_2,QUAI_BI_1,QUAI_BI_2,QUAI_BI_3,CUM_1,CUM_2,CUM_3,THUONG_HAN,HPV_1,HPV_2,HPV_3,VAC_XIN_PHE_CAU_KHAN,OTHER"
+    },
+    {
+      "fieldName": "notVaccinated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vaccinated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "injectionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "reaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nextAppointment",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "VaccinationTCMR",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "vaccinationsTCMR",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,395 @@
+//////////////////////////////////////////////////////
+// ENUMS
+//////////////////////////////////////////////////////
+
+enum Gender {
+    MALE
+    FEMALE
+    OTHERS
+}
+
+enum BirthStatusType {
+    NORMAL
+    CSECTION
+    EARLY
+    SUFFOCATE
+}
+
+enum RiskLevel {
+    YES
+    NO
+    FREQUENT
+    STOPPED
+}
+
+enum TypeToilet {
+    FLUSH
+    DOUBLE
+    BARREL
+    NONE
+}
+
+enum AllergyType {
+    DRUGS
+    CHEMICALS
+    FOOD
+    OTHER
+}
+
+enum RiskLevelAlcohol {
+    YES
+    NO
+    DROPPED
+}
+
+enum DisabilityType {
+    HEARING
+    VISION
+    ARM
+    LEG
+    SPINE
+    CLEFT
+    OTHER
+}
+
+enum DiseaseName {
+    HEART
+    BLOOD_PRESSURE
+    MENTAL
+    ASTHMA
+    DIABETES
+    EPILEPSY
+    CANCER
+    TUBERCULOSIS
+    OTHER
+}
+
+enum VaccineType {
+    BCG (BCG)
+    VGB_SO_SINH
+    DPT_VGB_HIB_1
+    DPT_VGB_HIB_2
+    DPT_VGB_HIB_3
+    BAI_LIET_1
+    BAI_LIET_2
+    BAI_LIET_3
+    SOI_1
+    SOI_2
+    DPT_4
+    VNNB_B1
+    VNNB_B2
+    VNNB_B3
+}
+
+enum VaccineTCMRType {
+    TA_1
+    TA_2
+    QUAI_BI_1
+    QUAI_BI_2
+    QUAI_BI_3
+    CUM_1
+    CUM_2
+    CUM_3
+    THUONG_HAN
+    HPV_1
+    HPV_2
+    HPV_3
+    VAC_XIN_PHE_CAU_KHAN
+    OTHER
+}
+
+enum TetanusDose {
+    UV1,
+    UV2,
+    UV3,
+    UV4,
+    UV5
+}
+
+//////////////////////////////////////////////////////
+// A. PATIENT
+//////////////////////////////////////////////////////
+
+entity Patient {
+    // Thông tin cá nhân
+    fullName String required
+    gender Gender required
+    dateOfBirth LocalDate
+    placeOfBirth String
+
+    bloodTypeAbo String
+    bloodTypeRh String
+
+    ethnic String
+    nationality String
+    religion String
+    job String
+
+    idNumber String
+    idIssueDate LocalDate
+    idIssuePlace String
+
+    healthInsuranceNumber String
+
+    // Nơi đăng ký HKTT
+    permanentAddress String
+    permanentWard String
+    permanentDistrict String
+    permanentProvince String
+
+    // Nơi ở hiện tại
+    currentAddress String
+    currentWard String
+    currentDistrict String
+    currentProvince String
+
+    // Thông tin liên lạc
+    landlinePhone String
+    mobilePhone String
+    email String
+
+    // Thông tin gia đình / người chăm sóc
+    motherName String
+    fatherName String
+
+    caregiverName String
+    caregiverRelation String
+
+    caregiverLandlinePhone String
+    caregiverMobilePhone String
+
+    // Mã hộ gia đình
+    familyCode String
+}
+
+
+
+entity AdditionalInformation {
+	smoking RiskLevel
+    alcoholRiskLevel RiskLevelAlcohol
+    alcoholGlassesPerDay Integer
+    drugUse RiskLevel
+    physicalActivity RiskLevel
+    exposureFactor TextBlob
+    exposureDate LocalDate
+    typeToilet TypeToilet
+    environmentalRisk TextBlob
+
+    cardiovascularDisease Boolean
+    hypertension Boolean
+    diabetes Boolean
+    stomachDisease Boolean
+    chronicLungDisease Boolean
+    asthma Boolean
+    goiter Boolean
+    hepatitis Boolean
+    congenitalHeartDisease Boolean
+    mentalDisorders Boolean
+    autism Boolean
+    epilepsy Boolean
+    cancer String
+    tuberculosis String
+    otherDiseases TextBlob
+
+    contraceptiveMethod String
+    lastPregnancy Integer
+    numberOfPregnancies Integer
+    numberOfMiscarriages Integer
+    numberOfAbortions Integer
+    numberOfBirths Integer
+    vaginalDelivery Integer
+    cesareanSection Integer
+    difficultDelivery Integer
+    numberOfFullTermBirths Integer
+    numberOfPrematureBirths Integer
+    numberOfChildrenAlive Integer
+    gynecologicalDiseases String
+
+    birthStatus BirthStatusType required
+    birthWeight Double
+    birthHeight Double
+    birthDefectNote TextBlob
+    otherBirthNote TextBlob
+
+    otherHealthNote TextBlob
+}
+
+
+//////////////////////////////////////////////////////
+// B3. MEDICAL HISTORY & ALLERGY
+//////////////////////////////////////////////////////
+
+entity Allergy {
+    type AllergyType required
+    description String
+}
+
+
+
+//////////////////////////////////////////////////////
+// B4. DISABILITY
+//////////////////////////////////////////////////////
+
+entity Disability {
+    type DisabilityType required
+    description String
+}
+
+//////////////////////////////////////////////////////
+// B5. SURGERY HISTORY
+//////////////////////////////////////////////////////
+
+entity SurgeryHistory {
+    bodyPart String
+    surgeryYear Integer
+    note String
+}
+
+//////////////////////////////////////////////////////
+// B6. FAMILY HISTORY
+//////////////////////////////////////////////////////
+
+entity FamilyAllergy {
+    type AllergyType required
+    description String
+    affectedPerson String required
+}
+
+entity Disease {
+    name DiseaseName required
+    specificType String
+    description String
+}
+
+entity FamilyDisease {
+    affectedPerson String required
+    relationshipToPatient String
+}
+
+
+
+//////////////////////////////////////////////////////
+// C. VACCINATION
+//////////////////////////////////////////////////////
+
+entity Vaccine {
+    name VaccineType required
+    notVaccinated Boolean
+    injectionDate LocalDate
+    reaction String
+    nextAppointment LocalDate
+}
+
+entity VaccinationForBaby {
+    vaccine VaccineType
+    numberUse Integer
+}
+
+entity VaccinationTCMR {
+    vaccine VaccineTCMRType required
+    notVaccinated Boolean
+    vaccinated Boolean
+    injectionDate LocalDate
+    reaction String
+    nextAppointment LocalDate
+}
+
+entity PregnancyTetanus {
+    dose TetanusDose required
+    notInjected Boolean
+    injectionDate LocalDate
+    pregnancyMonth Integer
+    reaction String
+    nextAppointment LocalDate
+    numberOfDosesReceived Integer
+}
+
+//////////////////////////////////////////////////////
+// D. MEDICAL EXAMINATION
+//////////////////////////////////////////////////////
+
+entity MedicalRecord {
+    examinationDate LocalDate required
+    medicalHistory TextBlob
+    leftEyeNoGlass Double
+    rightEyeNoGlass Double
+    leftEyeWithGlass Double
+    rightEyeWithGlass Double
+    pulse Integer
+    temperature Double
+    bloodPressure String
+    respiratoryRate Integer
+    weight Double
+    height Double
+    bmi Double
+    waist Double
+    skinMucosa String
+    other String
+    diseaseName String required
+    diseaseCode String
+    advice TextBlob
+    docterName String required
+}
+
+entity OrganExamination {
+    cardiovascular String
+    respiratory String
+    digestive String
+    urinary String
+    musculoskeletal String
+    endocrine String
+    neurological String
+    psychiatric String
+    surgery String
+    obstetricsAndGynecology String
+    otolaryngology String
+    dentistryAndMaxillofacialSurgery String
+    eye String
+    dermatology String
+    nutrition String
+    exercise String
+    other String
+    developmentAssessment String
+}
+
+entity ParaclinicalResult {
+    testName String required
+    result TextBlob
+    resultDate LocalDate
+}
+
+
+//////////////////////////////////////////////////////
+// RELATIONSHIPS
+//////////////////////////////////////////////////////
+
+relationship OneToOne {
+    Patient{additionalInfo} to AdditionalInformation{patient required}
+	Patient{vaccinationsForBaby} to VaccinationForBaby{patient required}
+
+    MedicalRecord{organExamination} to OrganExamination{medicalRecord}
+}
+
+relationship OneToMany {
+    Patient{allergies} to Allergy{patient required}
+    Patient{disabilities} to Disability{patient required}
+    Patient{surgeryHistories} to SurgeryHistory{patient required}
+    Patient{familyAllergies} to FamilyAllergy{patient required}
+    Patient{familyDiseases} to FamilyDisease{patient required}
+    Patient{vaccinationsTCMR} to VaccinationTCMR{patient required}
+    Patient{pregnancyTetanus} to PregnancyTetanus{patient}
+    Patient{medicalRecords} to MedicalRecord{patient required}
+
+    FamilyDisease{disease} to Disease{familyDisease required}
+    VaccinationForBaby{vaccine} to Vaccine{vaccinationForBaby required}
+
+    MedicalRecord{paraclinicalResults} to ParaclinicalResult{medicalRecord required}
+}
+
+//////////////////////////////////////////////////////
+// CONFIGURATIONS
+//////////////////////////////////////////////////////
+microservice * with microservice
+paginate all with pagination
+service all with serviceClass
+dto all with mapstruct

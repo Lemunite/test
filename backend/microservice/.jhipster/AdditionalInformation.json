@@ -1,0 +1,205 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025727"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "smoking",
+      "fieldType": "RiskLevel",
+      "fieldValues": "YES,NO,FREQUENT,STOPPED"
+    },
+    {
+      "fieldName": "alcoholRiskLevel",
+      "fieldType": "RiskLevelAlcohol",
+      "fieldValues": "YES,NO,DROPPED"
+    },
+    {
+      "fieldName": "alcoholGlassesPerDay",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "drugUse",
+      "fieldType": "RiskLevel",
+      "fieldValues": "YES,NO,FREQUENT,STOPPED"
+    },
+    {
+      "fieldName": "physicalActivity",
+      "fieldType": "RiskLevel",
+      "fieldValues": "YES,NO,FREQUENT,STOPPED"
+    },
+    {
+      "fieldName": "exposureFactor",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "exposureDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "typeToilet",
+      "fieldType": "TypeToilet",
+      "fieldValues": "FLUSH,DOUBLE,BARREL,NONE"
+    },
+    {
+      "fieldName": "environmentalRisk",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "cardiovascularDisease",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "hypertension",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "diabetes",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "stomachDisease",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "chronicLungDisease",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "asthma",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "goiter",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "hepatitis",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "congenitalHeartDisease",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "mentalDisorders",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "autism",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "epilepsy",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "cancer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tuberculosis",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "otherDiseases",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "contraceptiveMethod",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastPregnancy",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfPregnancies",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfMiscarriages",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfAbortions",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfBirths",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "vaginalDelivery",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cesareanSection",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "difficultDelivery",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfFullTermBirths",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfPrematureBirths",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfChildrenAlive",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "gynecologicalDiseases",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthStatus",
+      "fieldType": "BirthStatusType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NORMAL,CSECTION,EARLY,SUFFOCATE"
+    },
+    {
+      "fieldName": "birthWeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "birthHeight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "birthDefectNote",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "otherBirthNote",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "otherHealthNote",
+      "fieldType": "TextBlob"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "AdditionalInformation",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "additionalInfo",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

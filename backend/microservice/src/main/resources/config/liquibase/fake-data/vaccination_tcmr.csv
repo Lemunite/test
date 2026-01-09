@@ -1,0 +1,11 @@
+id;vaccine;not_vaccinated;vaccinated;injection_date;reaction;next_appointment;patient_id
+1;CUM_3;true;false;2026-01-09;scrutinise seriously woot;2026-01-08;1
+2;QUAI_BI_1;false;true;2026-01-08;er;2026-01-08;2
+3;HPV_2;true;false;2026-01-08;while lest moisten;2026-01-08;3
+4;QUAI_BI_3;true;false;2026-01-08;gosh perspire excluding;2026-01-08;4
+5;HPV_3;false;false;2026-01-08;wherever screw developing;2026-01-08;5
+6;THUONG_HAN;true;true;2026-01-08;gently remark precedent;2026-01-08;6
+7;HPV_2;false;true;2026-01-08;instead bemuse wavy;2026-01-09;7
+8;QUAI_BI_3;true;true;2026-01-08;lively dulcimer blah;2026-01-09;8
+9;QUAI_BI_1;true;false;2026-01-08;torn tenderly pish;2026-01-09;9
+10;VAC_XIN_PHE_CAU_KHAN;true;true;2026-01-08;forsaken academics;2026-01-08;10

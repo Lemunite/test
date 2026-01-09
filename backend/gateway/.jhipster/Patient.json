@@ -1,0 +1,219 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025833"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE,FEMALE,OTHERS"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "placeOfBirth",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bloodTypeAbo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bloodTypeRh",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ethnic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "religion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "job",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idIssueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "idIssuePlace",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "healthInsuranceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "permanentAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "permanentWard",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "permanentDistrict",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "permanentProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentWard",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentDistrict",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentProvince",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "landlinePhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobilePhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "motherName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fatherName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caregiverName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caregiverRelation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caregiverLandlinePhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "caregiverMobilePhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "familyCode",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "Patient",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "additionalInformation",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "additionalInfo",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "vaccinationForBaby",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "vaccinationsForBaby",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "allergy",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "allergies",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "disability",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "disabilities",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "surgeryHistory",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "surgeryHistories",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "familyAllergy",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "familyAllergies",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "familyDisease",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "familyDiseases",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "vaccinationTCMR",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "vaccinationsTCMR",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "pregnancyTetanus",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "pregnancyTetanus",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "medicalRecord",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "medicalRecords",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

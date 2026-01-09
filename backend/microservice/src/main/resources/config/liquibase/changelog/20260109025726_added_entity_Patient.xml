@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Patient.
+    -->
+    <changeSet id="20260109025726-1" author="jhipster">
+        <createTable tableName="patient">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="full_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="place_of_birth" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="blood_type_abo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="blood_type_rh" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ethnic" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nationality" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="religion" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="job" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_issue_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_issue_place" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="health_insurance_number" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="permanent_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="permanent_ward" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="permanent_district" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="permanent_province" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="current_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="current_ward" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="current_district" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="current_province" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="landline_phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mobile_phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mother_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="father_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="caregiver_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="caregiver_relation" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="caregiver_landline_phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="caregiver_mobile_phone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="family_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="additional_info_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_patient__additional_info_id" />
+            </column>
+            <column name="vaccinations_for_baby_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_patient__vaccinations_for_baby_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20260109025726-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/patient.csv"
+                  separator=";"
+                  tableName="patient"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="full_name" type="string"/>
+            <column name="gender" type="string"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="place_of_birth" type="string"/>
+            <column name="blood_type_abo" type="string"/>
+            <column name="blood_type_rh" type="string"/>
+            <column name="ethnic" type="string"/>
+            <column name="nationality" type="string"/>
+            <column name="religion" type="string"/>
+            <column name="job" type="string"/>
+            <column name="id_number" type="string"/>
+            <column name="id_issue_date" type="date"/>
+            <column name="id_issue_place" type="string"/>
+            <column name="health_insurance_number" type="string"/>
+            <column name="permanent_address" type="string"/>
+            <column name="permanent_ward" type="string"/>
+            <column name="permanent_district" type="string"/>
+            <column name="permanent_province" type="string"/>
+            <column name="current_address" type="string"/>
+            <column name="current_ward" type="string"/>
+            <column name="current_district" type="string"/>
+            <column name="current_province" type="string"/>
+            <column name="landline_phone" type="string"/>
+            <column name="mobile_phone" type="string"/>
+            <column name="email" type="string"/>
+            <column name="mother_name" type="string"/>
+            <column name="father_name" type="string"/>
+            <column name="caregiver_name" type="string"/>
+            <column name="caregiver_relation" type="string"/>
+            <column name="caregiver_landline_phone" type="string"/>
+            <column name="caregiver_mobile_phone" type="string"/>
+            <column name="family_code" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

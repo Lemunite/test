@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025737"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "dose",
+      "fieldType": "TetanusDose",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UV1,UV2,UV3,UV4,UV5"
+    },
+    {
+      "fieldName": "notInjected",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "injectionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "pregnancyMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "reaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nextAppointment",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "numberOfDosesReceived",
+      "fieldType": "Integer"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "PregnancyTetanus",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "pregnancyTetanus",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025732"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "DiseaseName",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "HEART,BLOOD_PRESSURE,MENTAL,ASTHMA,DIABETES,EPILEPSY,CANCER,TUBERCULOSIS,OTHER"
+    },
+    {
+      "fieldName": "specificType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "Disease",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "familyDisease",
+      "otherEntityRelationshipName": "disease",
+      "relationshipName": "familyDisease",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

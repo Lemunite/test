@@ -1,0 +1,97 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025739"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "cardiovascular",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "respiratory",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "digestive",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "urinary",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "musculoskeletal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "endocrine",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "neurological",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "psychiatric",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "surgery",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "obstetricsAndGynecology",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "otolaryngology",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dentistryAndMaxillofacialSurgery",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eye",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dermatology",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nutrition",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exercise",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "other",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "developmentAssessment",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "OrganExamination",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "medicalRecord",
+      "otherEntityRelationshipName": "organExamination",
+      "relationshipName": "medicalRecord",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

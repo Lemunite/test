@@ -1,0 +1,123 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025738"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "examinationDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "medicalHistory",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "leftEyeNoGlass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rightEyeNoGlass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "leftEyeWithGlass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rightEyeWithGlass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "pulse",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "temperature",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "bloodPressure",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "respiratoryRate",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "bmi",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "waist",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "skinMucosa",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "other",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "diseaseName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "diseaseCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "advice",
+      "fieldType": "TextBlob"
+    },
+    {
+      "fieldName": "docterName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "MedicalRecord",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "organExamination",
+      "otherEntityRelationshipName": "medicalRecord",
+      "relationshipName": "organExamination",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paraclinicalResult",
+      "otherEntityRelationshipName": "medicalRecord",
+      "relationshipName": "paraclinicalResults",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "medicalRecords",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

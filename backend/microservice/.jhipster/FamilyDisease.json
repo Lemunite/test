@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20260109025733"
+  },
+  "applications": "*",
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "affectedPerson",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "relationshipToPatient",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "FamilyDisease",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "disease",
+      "otherEntityRelationshipName": "familyDisease",
+      "relationshipName": "disease",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "familyDiseases",
+      "relationshipName": "patient",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

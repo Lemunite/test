@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity OrganExamination.
+    -->
+    <changeSet id="20260109025739-1" author="jhipster">
+        <createTable tableName="organ_examination">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cardiovascular" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="respiratory" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="digestive" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="urinary" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="musculoskeletal" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="endocrine" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="neurological" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="psychiatric" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="surgery" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="obstetrics_and_gynecology" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="otolaryngology" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dentistry_and_maxillofacial_surgery" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="eye" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dermatology" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="nutrition" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="exercise" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="other" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="development_assessment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20260109025739-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/organ_examination.csv"
+                  separator=";"
+                  tableName="organ_examination"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="cardiovascular" type="string"/>
+            <column name="respiratory" type="string"/>
+            <column name="digestive" type="string"/>
+            <column name="urinary" type="string"/>
+            <column name="musculoskeletal" type="string"/>
+            <column name="endocrine" type="string"/>
+            <column name="neurological" type="string"/>
+            <column name="psychiatric" type="string"/>
+            <column name="surgery" type="string"/>
+            <column name="obstetrics_and_gynecology" type="string"/>
+            <column name="otolaryngology" type="string"/>
+            <column name="dentistry_and_maxillofacial_surgery" type="string"/>
+            <column name="eye" type="string"/>
+            <column name="dermatology" type="string"/>
+            <column name="nutrition" type="string"/>
+            <column name="exercise" type="string"/>
+            <column name="other" type="string"/>
+            <column name="development_assessment" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
